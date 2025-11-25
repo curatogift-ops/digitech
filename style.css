@@ -458,10 +458,15 @@ footer {
 .popup-content {
     padding: 20px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
     border-bottom: 1px solid #f3f4f6;
     background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(10, 102, 194, 0.1));
+}
+
+.popup-text {
+    flex: 1;
+    text-align: center;
 }
 
 .popup-icon {
