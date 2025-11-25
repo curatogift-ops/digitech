@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.classList.add('show');
             popup.classList.remove('hidden');
             sessionStorage.setItem(popupKey, 'true');
-        }, 3000); // 3 seconds delay
+        }, 2000);
     }
 
     // Close popup
