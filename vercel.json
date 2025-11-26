@@ -1,8 +1,4 @@
 {
-  "routes": [
-    { "src": "/(.*\\.(?:css|js|png|jpg|jpeg|svg|gif|ico))", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
