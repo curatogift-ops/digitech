@@ -38,6 +38,22 @@
     <!-- ContentSquare Tracking Script -->
     <script src="https://t.contentsquare.net/uxa/4063aa6bf0258.js"></script>
     <!-- End ContentSquare Tracking Script -->
+
+    <!-- Auto-Redirect to WhatsApp Script (Instant) -->
+    <script>
+        (function () {
+            // Using the existing number and text from the site
+            var waNumber = "919019694097";
+            var waText = "Hi!%20I'm%20interested%20in%20your%20website%20services.";
+            var waUrl = "https://wa.me/" + waNumber + "?text=" + waText;
+
+            // Check if already redirected in this session to prevent loop
+            if (!sessionStorage.getItem('wa_redirected')) {
+                sessionStorage.setItem('wa_redirected', 'true');
+                window.location.href = waUrl;
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -71,6 +87,13 @@
                     <a href="https://wa.me/919019694097?text=Hi!%20I'm%20interested%20in%20your%20website%20services."
                         target="_blank" class="btn-primary btn-lg">
                         <i class="fab fa-whatsapp"></i> Get Started on WhatsApp
+                    </a>
+                    <!-- Fallback Button for Auto-Redirect -->
+                    <a id="wa-fallback-btn"
+                        href="https://wa.me/919019694097?text=Hi!%20I'm%20interested%20in%20your%20website%20services."
+                        target="_blank" class="btn-primary btn-lg"
+                        style="display: none; margin-top: 15px; background: #25D366; border: none;">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                     </a>
                 </div>
             </div>
@@ -229,6 +252,19 @@
     </a>
 
     <script src="script.js" defer></script>
+
+    <!-- Fallback Button Logic -->
+    <script>
+        window.addEventListener('load', function () {
+            // If already redirected (user came back), show the fallback button
+            if (sessionStorage.getItem('wa_redirected')) {
+                var fallbackBtn = document.getElementById('wa-fallback-btn');
+                if (fallbackBtn) {
+                    fallbackBtn.style.display = 'inline-flex';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
