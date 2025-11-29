@@ -1,30 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // WhatsApp Popup Logic
-    const popup = document.getElementById('whatsapp-popup');
-    const closeBtn = document.getElementById('close-popup');
-    const popupKey = 'whatsapp_popup_shown';
-
-    // Check if popup has been shown in this session
-    const hasShownPopup = sessionStorage.getItem(popupKey);
-
-    if (!hasShownPopup) {
-        setTimeout(() => {
-            popup.classList.add('show');
-            popup.classList.remove('hidden');
-            sessionStorage.setItem(popupKey, 'true');
-        }, 2000);
-    }
-
-    // Close popup
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            popup.classList.remove('show');
-            setTimeout(() => {
-                popup.classList.add('hidden');
-            }, 400); // Wait for transition
-        });
-    }
-
     // Mobile Menu Logic
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
