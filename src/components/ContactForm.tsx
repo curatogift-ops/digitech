@@ -132,7 +132,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                                             transition={{ delay: 0.5 }}
                                             className="text-white/90"
                                         >
-                                            We'll get back to you soon!
+                                            We&apos;ll get back to you soon!
                                         </motion.p>
                                     </motion.div>
                                 )}
@@ -142,10 +142,10 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                             <div className="relative z-10 p-8">
                                 <div className="text-center mb-8">
                                     <h2 className="text-3xl font-bold text-white mb-2">
-                                        Let's Get Started
+                                        Let&apos;s Get Started
                                     </h2>
                                     <p className="text-white/60">
-                                        Fill in your details and we'll reach out to you
+                                        Fill in your details and we&apos;ll reach out to you
                                     </p>
                                 </div>
 

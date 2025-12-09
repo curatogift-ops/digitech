@@ -16,7 +16,6 @@ const nextConfig = {
     compress: true,
     poweredByHeader: false,
     generateEtags: true,
-    swcMinify: true,
 };
 
 export default nextConfig;
