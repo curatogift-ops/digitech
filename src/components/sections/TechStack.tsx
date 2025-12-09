@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Server, Smartphone, Database, Cloud, Wrench } from "lucide-react";
+import { Code2, Server, Smartphone } from "lucide-react";
 
 const techCategories = [
     {
@@ -19,26 +19,11 @@ const techCategories = [
         title: "Mobile Development",
         skills: ["React Native", "Flutter", "Mobile-First Design"],
     },
-    {
-        icon: Database,
-        title: "Database Management",
-        skills: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
-    },
-    {
-        icon: Cloud,
-        title: "Cloud Services",
-        skills: ["AWS", "Google Cloud", "Azure", "DevOps", "Docker", "CI/CD"],
-    },
-    {
-        icon: Wrench,
-        title: "Development Tools",
-        skills: ["Git", "Docker", "CI/CD", "Agile/Scrum"],
-    },
 ];
 
 export function TechStack() {
     return (
-        <section className="relative py-20 md:py-32 bg-background overflow-hidden">
+        <section className="relative py-12 md:py-20 bg-background overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div
@@ -57,7 +42,7 @@ export function TechStack() {
 
             <div className="container relative z-10 px-6 mx-auto">
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {techCategories.map((category, index) => (
                         <motion.div
                             key={category.title}

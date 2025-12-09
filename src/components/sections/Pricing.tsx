@@ -5,20 +5,6 @@ import { Check } from "lucide-react";
 
 const pricingPlans = [
     {
-        name: "Landing Page",
-        price: "2,999",
-        description: "Perfect for getting started with a professional online presence",
-        features: [
-            "Single page design",
-            "Responsive layout",
-            "SEO optimized",
-            "Fast loading",
-            "Contact form",
-            "Social media integration",
-        ],
-        popular: false,
-    },
-    {
         name: "Full Website",
         price: "4,999",
         description: "Complete website solution for your business",
@@ -92,7 +78,7 @@ export function Pricing() {
                 </motion.div>
 
                 {/* Pricing Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {pricingPlans.map((plan, index) => (
                         <motion.div
                             key={plan.name}
@@ -143,8 +129,8 @@ export function Pricing() {
 
                                 {/* CTA Button */}
                                 <button className={`w-full py-3 px-6 rounded-full font-bold transition-all duration-200 ${plan.popular
-                                        ? "bg-neon-purple text-white hover:bg-neon-purple/90"
-                                        : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                                    ? "bg-neon-purple text-white hover:bg-neon-purple/90"
+                                    : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
                                     }`}>
                                     Get Started
                                 </button>
