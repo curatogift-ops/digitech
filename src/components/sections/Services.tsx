@@ -28,7 +28,7 @@ const services = [
 
 export function Services() {
     return (
-        <section className="relative py-20 md:py-32 bg-background overflow-hidden">
+        <section className="relative py-12 md:py-20 bg-background overflow-hidden">
             {/* Background Decoration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div
@@ -65,7 +65,7 @@ export function Services() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16 md:mb-20"
+                    className="text-center mb-10 md:mb-12"
                 >
                     <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4 md:mb-6">
                         Services
