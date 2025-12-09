@@ -24,6 +24,7 @@ export function Hero() {
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
+                        style={{ willChange: "transform, opacity" }}
                         className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-neon-purple/20 rounded-full blur-[100px]"
                     />
                     <motion.div
@@ -37,6 +38,7 @@ export function Hero() {
                             ease: "easeInOut",
                             delay: 1,
                         }}
+                        style={{ willChange: "transform, opacity" }}
                         className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-slime-green/10 rounded-full blur-[120px]"
                     />
                     {/* Floating Grid Lines */}

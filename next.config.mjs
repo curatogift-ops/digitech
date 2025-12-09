@@ -4,15 +4,19 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: '**',
+                protocol: "https",
+                hostname: "**",
             },
         ],
+        formats: ["image/avif", "image/webp"],
     },
-    // Ensure proper routing for App Router
     experimental: {
-        optimizePackageImports: ['lucide-react', 'framer-motion'],
+        optimizePackageImports: ["lucide-react", "framer-motion"],
     },
+    compress: true,
+    poweredByHeader: false,
+    generateEtags: true,
+    swcMinify: true,
 };
 
 export default nextConfig;
