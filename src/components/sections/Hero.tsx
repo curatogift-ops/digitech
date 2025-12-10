@@ -80,14 +80,16 @@ export function Hero() {
 
                             {/* CTA Button */}
                             <div className="flex justify-center mb-6">
-                                <motion.button
-                                    onClick={() => setIsFormOpen(true)}
+                                <motion.a
+                                    href="https://wa.me/918652111486"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold rounded-full hover:bg-white/90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 text-base md:text-lg"
                                 >
                                     Get Started <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-                                </motion.button>
+                                </motion.a>
                             </div>
 
                             {/* Decorative accent line */}

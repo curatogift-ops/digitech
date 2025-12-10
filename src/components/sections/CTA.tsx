@@ -36,13 +36,16 @@ export function CTA() {
                     .
                 </motion.h2>
 
-                <motion.button
+                <motion.a
+                    href="https://wa.me/918652111486"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-10 py-5 bg-white text-black text-xl font-bold rounded-full flex items-center gap-3 mx-auto hover:bg-gray-100 transition-colors"
                 >
                     Get started <ArrowRight className="w-6 h-6" />
-                </motion.button>
+                </motion.a>
             </div>
 
             {/* Floating Decor */}

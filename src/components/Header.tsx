@@ -42,7 +42,9 @@ export function Header() {
 
                 {/* Desktop CTA Button */}
                 <motion.a
-                    href="#pricing"
+                    href="https://wa.me/918652111486"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="hidden md:block px-6 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-white/90 transition-colors"
@@ -86,7 +88,9 @@ export function Header() {
                                 </Link>
                             ))}
                             <a
-                                href="#pricing"
+                                href="https://wa.me/918652111486"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 onClick={closeMobileMenu}
                                 className="mt-2 px-6 py-3 bg-white text-black text-base font-bold rounded-full hover:bg-white/90 transition-colors text-center"
                             >

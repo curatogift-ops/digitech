@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 
 const pricingPlans = [
     {
-        name: "Full Website",
+        name: "Website",
         price: "4,999",
         description: "Complete website solution for your business",
         features: [
@@ -14,7 +14,6 @@ const pricingPlans = [
             "Fully responsive",
             "SEO optimized",
             "Contact forms",
-            "Admin panel",
             "Free 1 month support",
             "Fast performance",
         ],
@@ -128,12 +127,17 @@ export function Pricing() {
                                 </ul>
 
                                 {/* CTA Button */}
-                                <button className={`w-full py-3 px-6 rounded-full font-bold transition-all duration-200 ${plan.popular
-                                    ? "bg-neon-purple text-white hover:bg-neon-purple/90"
-                                    : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
-                                    }`}>
+                                <a
+                                    href="https://wa.me/918652111486"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`w-full py-3 px-6 rounded-full font-bold transition-all duration-200 text-center block ${plan.popular
+                                        ? "bg-neon-purple text-white hover:bg-neon-purple/90"
+                                        : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                                        }`}
+                                >
                                     Get Started
-                                </button>
+                                </a>
                             </div>
                         </motion.div>
                     ))}
