@@ -1,105 +1,149 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Globe, Truck, Crown, Clock, Layout } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+
+const heroImages = [
+    "/images/projects/Curato.png",
+    "/images/projects/RR.png",
+    "/images/projects/Security.png",
+    "/images/projects/Sidar.png"
+];
 
 export function Hero() {
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
             <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
-            <section className="relative flex items-center justify-center overflow-visible bg-background pt-24 md:pt-32 pb-20 md:pb-28 px-4">
-                {/* Background Gradients/Blobs */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <motion.div
-                        animate={{
-                            y: [0, -20, 0],
-                            opacity: [0.5, 0.8, 0.5],
-                        }}
-                        transition={{
-                            duration: 5,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                        style={{ willChange: "transform, opacity" }}
-                        className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-neon-purple/20 rounded-full blur-[100px]"
-                    />
-                    <motion.div
-                        animate={{
-                            y: [0, 20, 0],
-                            opacity: [0.3, 0.6, 0.3],
-                        }}
-                        transition={{
-                            duration: 7,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: 1,
-                        }}
-                        style={{ willChange: "transform, opacity" }}
-                        className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-slime-green/10 rounded-full blur-[120px]"
-                    />
-                    {/* Floating Grid Lines */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
-                </div>
-
-                <div className="container relative z-10 mx-auto max-w-6xl">
-                    {/* Text Content */}
-                    <div className="max-w-4xl mx-auto text-center">
-                        <motion.div
+            <section className="relative flex flex-col pt-20 md:pt-24 pb-0 bg-blue-50 overflow-hidden">
+                <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20 mb-20">
+                    {/* Left Column: Text Content */}
+                    <div className="flex-1 text-center md:text-left">
+                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6"
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                                <span className="flex h-2 w-2 rounded-full bg-slime-green animate-pulse" />
-                                <span className="text-sm md:text-base font-medium text-white/80">Available for new projects</span>
+                            Get Your Business <br className="hidden lg:block" />
+                            Online Today <Globe className="inline-block w-8 h-8 md:w-10 md:h-10 text-blue-400 mb-2" />
+                        </motion.h1>
+
+                        <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed font-medium">
+                            Professional business websites starting at <span className="font-bold text-slate-900">₹5,000</span> only! e-commerce stores from <span className="font-bold text-slate-900">₹9,999</span>. Fast, responsive, and SEO-ready.
+                        </p>
+
+                        {/* CTA Buttons - Outlined Style */}
+                        <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-10">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-900 hover:text-white transition-all flex items-center gap-2"
+                            >
+                                Designs <ArrowRight className="w-4 h-4" />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-900 hover:text-white transition-all"
+                            >
+                                Pricing
+                            </motion.button>
+                        </div>
+
+
+                    </div>
+
+                    {/* Right Column: Image Presentation */}
+                    <div className="flex-1 w-full max-w-[600px] md:max-w-none relative">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-2"
+                        >
+                            {/* Browser Mockup Header */}
+                            <div className="h-8 bg-gray-50 border-b border-gray-100 flex items-center gap-2 px-4">
+                                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-400"></div>
                             </div>
-
-                            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.1] mb-3 md:mb-5">
-                                Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-slime-green">future</span> of your online presence.
-                            </h1>
-
-                            <p className="text-lg sm:text-xl md:text-2xl text-white/60 mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed">
-                                We create stunning digital experiences that help brands grow. From pixel-perfect designs to high-performance code.
-                            </p>
-
-                            {/* Stats/Features Row */}
-                            <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-neon-purple" />
-                                    <span className="text-base md:text-lg text-white/70">Fast Delivery</span>
+                            {/* Content */}
+                            <div className="aspect-[4/3] bg-gray-50 relative overflow-hidden group">
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={currentImageIndex}
+                                        src={heroImages[currentImageIndex]}
+                                        alt="Website Preview"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="w-full h-full object-cover object-top absolute inset-0"
+                                    />
+                                </AnimatePresence>
+                                {/* Overlay Card Effect (like in reference) */}
+                                <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg max-w-[200px] z-10">
+                                    <h4 className="text-xl font-serif text-slate-800 mb-1">Our Projects</h4>
+                                    <p className="text-xs text-slate-600">Latest Works</p>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-slime-green" />
-                                    <span className="text-base md:text-lg text-white/70">Premium Quality</span>
-                                </div>
                             </div>
-
-                            {/* CTA Button */}
-                            <div className="flex justify-center mb-6">
-                                <motion.a
-                                    href="https://wa.me/918652111486"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold rounded-full hover:bg-white/90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 text-base md:text-lg"
-                                >
-                                    Get Started <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-                                </motion.a>
-                            </div>
-
-                            {/* Decorative accent line */}
-                            <motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: "200px" }}
-                                transition={{ delay: 0.8, duration: 1 }}
-                                className="h-1 bg-gradient-to-r from-neon-purple to-transparent rounded-full mx-auto"
-                            />
                         </motion.div>
+                    </div>
+                </div>
+
+                {/* Bottom Feature Bar (Dark Blue) */}
+                <div className="bg-slate-900 py-8 w-full border-t-4 border-blue-500">
+                    <div className="container mx-auto px-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-white">
+                            <div className="flex items-center justify-center md:justify-start gap-4">
+                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
+                                    <Truck className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                                </div>
+                                <div className="text-left">
+                                    <h4 className="font-bold text-sm md:text-base">Express Delivery</h4>
+                                    <p className="text-xs text-white/60">Get online in 3-5 days</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-center md:justify-start gap-4">
+                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
+                                    <Crown className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                                </div>
+                                <div className="text-left">
+                                    <h4 className="font-bold text-sm md:text-base">Affordable Pricing</h4>
+                                    <p className="text-xs text-white/60">Starting at just ₹5000</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-center md:justify-start gap-4">
+                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
+                                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                                </div>
+                                <div className="text-left">
+                                    <h4 className="font-bold text-sm md:text-base">Support 24/7</h4>
+                                    <p className="text-xs text-white/60">We are happy to help you anytime.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-center md:justify-start gap-4">
+                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
+                                    <Layout className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                                </div>
+                                <div className="text-left">
+                                    <h4 className="font-bold text-sm md:text-base">Advance Designs</h4>
+                                    <p className="text-xs text-white/60">SEO optimized & Mobile Friendly</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
