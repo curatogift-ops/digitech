@@ -68,7 +68,7 @@ export function Pricing() {
                     </motion.div>
 
                     <p className="text-lg md:text-xl font-semibold text-slate-800 mb-3">
-                        Quality work shouldn't break the bank.
+                        Quality work shouldn&apos;t break the bank.
                     </p>
                     <p className="text-slate-600 max-w-2xl mx-auto">
                         Choose the perfect plan for your business. All plans include quality code and modern design.

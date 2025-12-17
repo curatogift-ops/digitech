@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
     id: number;
@@ -118,10 +119,11 @@ export function ProjectCarousel() {
                                     transformStyle: "preserve-3d",
                                 }}
                             >
-                                <img
+                                <Image
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover pointer-events-none" // prevent image drag interfering
+                                    fill
+                                    className="object-cover pointer-events-none" // prevent image drag interfering
                                 />
                                 {distance === 0 && (
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
