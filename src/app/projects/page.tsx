@@ -22,7 +22,7 @@ export default function ProjectsPage() {
                                 <span className="text-blue-600">Masterpieces</span>
                             </h1>
                             <p className="text-xl text-slate-600 leading-relaxed font-medium">
-                                We combine strategy, design, and engineering to build products that redefine industries. Explore our latest work and the impact we've created.
+                                We combine strategy, design, and engineering to build products that redefine industries. Explore our latest work and the impact we&apos;ve created.
                             </p>
                         </motion.div>
                     </div>

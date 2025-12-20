@@ -53,7 +53,7 @@ export default function ServicesPage() {
                                 through <span className="text-blue-600">Pure Innovation</span>
                             </h2>
                             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                We don't just build websites; we build business tools that solve real problems. Our approach is rooted in deep strategy and executed with master-level engineering.
+                                We don&apos;t just build websites; we build business tools that solve real problems. Our approach is rooted in deep strategy and executed with master-level engineering.
                             </p>
 
                             <ul className="space-y-4 mb-10">
