@@ -12,13 +12,9 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/" className="flex items-center gap-2 mb-6 group">
-                            <Image
-                                src="/logo.png"
-                                alt="DigitechAvenue"
-                                width={120}
-                                height={40}
-                                className="h-10 w-auto object-contain"
-                            />
+                            <span className="text-2xl font-extrabold tracking-tight text-slate-900">
+                                DigitechAvenue
+                            </span>
                         </Link>
                         <p className="text-slate-600 mb-6 leading-relaxed">
                             Building digital experiences that drive growth and innovation. Expert web development solutions for modern businesses.

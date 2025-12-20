@@ -6,10 +6,10 @@ import { ArrowRight, Globe, Truck, Crown, Clock, Layout } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 
 const heroImages = [
-    "/images/projects/Curato.png",
-    "/images/projects/RR.png",
-    "/images/projects/Security.png",
-    "/images/projects/Sidar.png"
+    "/homepage images/image copy 2.png",
+    "/homepage images/image copy 3.png",
+    "/homepage images/image copy.png",
+    "/homepage images/image.png"
 ];
 
 export function Hero() {
@@ -94,10 +94,7 @@ export function Hero() {
                                     />
                                 </AnimatePresence>
                                 {/* Overlay Card Effect (like in reference) */}
-                                <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg max-w-[200px] z-10">
-                                    <h4 className="text-xl font-serif text-slate-800 mb-1">Our Projects</h4>
-                                    <p className="text-xs text-slate-600">Latest Works</p>
-                                </div>
+
                             </div>
                         </motion.div>
                     </div>

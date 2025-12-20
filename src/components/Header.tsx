@@ -6,9 +6,10 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-    { name: "Services", href: "#services" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Pricing", href: "/#pricing" },
 ];
 
 export function Header() {
