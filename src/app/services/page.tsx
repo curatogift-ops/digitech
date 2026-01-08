@@ -13,8 +13,6 @@ export default function ServicesPage() {
 
             {/* Hero Section for Services */}
             <div className="pt-32 pb-20 bg-slate-900 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-
                 <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -41,7 +39,7 @@ export default function ServicesPage() {
             {/* Why Choose Us Section */}
             <section className="py-24 bg-white border-t border-slate-100">
                 <div className="container mx-auto max-w-7xl px-4 md:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="max-w-3xl">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -80,25 +78,6 @@ export default function ServicesPage() {
                             >
                                 Start Your Project <ArrowRight className="w-5 h-5" />
                             </motion.a>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="relative"
-                        >
-                            <div className="aspect-[4/3] rounded-3xl bg-slate-100 overflow-hidden border border-slate-200 shadow-2xl">
-                                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent" />
-                                {/* Displaying a placeholder-like aesthetic since we don't have an image path here yet */}
-                                <div className="p-12 h-full flex flex-col justify-center">
-                                    <div className="h-2 w-24 bg-blue-500 rounded-full mb-8" />
-                                    <div className="h-10 w-full bg-slate-200 rounded-2xl mb-4" />
-                                    <div className="h-10 w-3/4 bg-slate-200 rounded-2xl mb-4" />
-                                    <div className="h-40 w-full bg-slate-200 rounded-2xl" />
-                                </div>
-                            </div>
                         </motion.div>
                     </div>
                 </div>
