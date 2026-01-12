@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 interface Project {
@@ -71,12 +71,7 @@ export function ProjectGrid() {
                         >
                             {/* Image Container */}
                             <div className="relative h-full w-full overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
-                                />
+                                {/* Image removed as per request */}
 
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-90" />
