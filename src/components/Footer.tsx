@@ -61,10 +61,15 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-8 flex justify-center items-center">
+                <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-slate-500">
                         © {new Date().getFullYear()} DigitechAvenue. All rights reserved.
                     </p>
+                    <div className="flex gap-6">
+                        <Link href="/terms" className="text-sm text-slate-500 hover:text-black transition-colors">
+                            Terms & Conditions
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>
