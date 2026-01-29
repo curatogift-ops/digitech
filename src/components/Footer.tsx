@@ -17,7 +17,7 @@ export function Footer() {
                                 alt="DigitechAvenue" 
                                 width={250} 
                                 height={70} 
-                                className="h-14 w-auto object-contain"
+                                className="h-10 w-auto object-contain"
                             />
                         </Link>
                         <p className="text-slate-600 mb-6 leading-relaxed">
