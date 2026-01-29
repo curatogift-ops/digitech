@@ -64,7 +64,7 @@ export function Process() {
                 <div className="relative max-w-6xl mx-auto">
                     {/* Main Card Wrapper */}
                     <div className="bg-white rounded-[48px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-50 p-10 md:p-20">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 items-start relative">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start relative">
                             {/* Connecting Lines (Desktop) */}
                             <div className="hidden md:block absolute top-[85px] left-[15%] right-[15%] h-[2px] z-0">
                                 <div className="w-full h-full flex items-center justify-between">
@@ -87,7 +87,7 @@ export function Process() {
                                     className="flex flex-col items-center text-center relative z-10"
                                 >
                                     {/* Circle Badge Design */}
-                                    <div className="relative mb-10 group">
+                                    <div className="relative mb-6 group">
                                         {/* Outer Ring (Light Color Background) */}
                                         <div
                                             className="w-[160px] h-[160px] rounded-full flex items-center justify-center p-1"
@@ -138,7 +138,7 @@ export function Process() {
 
                                     {/* Connecting Line (Mobile) */}
                                     {index < steps.length - 1 && (
-                                        <div className="md:hidden flex flex-col items-center h-16 mt-6">
+                                        <div className="md:hidden flex flex-col items-center h-8 mt-4">
                                             <div className="w-px h-full bg-slate-200" />
                                             <div className="w-2.5 h-2.5 rounded-full bg-slate-300 -mt-1" />
                                         </div>

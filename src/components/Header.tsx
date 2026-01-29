@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { Zap, Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
+    { name: "Blog", href: "/blog" },
     { name: "Pricing", href: "/#pricing" },
+    { name: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -19,12 +22,17 @@ export function Header() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200">
-            <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="container mx-auto px-6 py-3 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
-                    <span className="text-2xl font-extrabold tracking-tight text-slate-900">
-                        DigitechAvenue
-                    </span>
+                    <Image 
+                        src="/images/Group 115.svg"
+                        alt="DigitechAvenue" 
+                        width={200} 
+                        height={50} 
+                        className="h-10 w-auto object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}

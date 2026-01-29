@@ -26,7 +26,7 @@ export function Hero() {
     return (
         <>
             <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
-            <section className="relative flex flex-col pt-20 md:pt-24 pb-0 bg-blue-50 overflow-hidden">
+            <section className="relative flex flex-col pt-32 md:pt-40 pb-0 bg-blue-50 overflow-hidden">
                 <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20 mb-20">
                     {/* Left Column: Text Content */}
                     <div className="flex-1 text-center md:text-left">
@@ -49,16 +49,18 @@ export function Hero() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-900 hover:text-white transition-all flex items-center gap-2"
+                                onClick={() => setIsFormOpen(true)}
+                                className="px-6 py-2.5 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-all flex items-center gap-2 shadow-lg shadow-slate-900/20"
                             >
-                                Designs <ArrowRight className="w-4 h-4" />
+                                Get Quote <ArrowRight className="w-4 h-4" />
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-900 hover:text-white transition-all"
+                                onClick={() => setIsFormOpen(true)}
+                                className="px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-50 transition-all"
                             >
-                                Pricing
+                                Free Demo
                             </motion.button>
                         </div>
 
@@ -100,49 +102,7 @@ export function Hero() {
                     </div>
                 </div>
 
-                {/* Bottom Feature Bar (Dark Blue) */}
-                <div className="bg-slate-900 py-8 w-full border-t-4 border-blue-500">
-                    <div className="container mx-auto px-4">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-white">
-                            <div className="flex items-center justify-center md:justify-start gap-4">
-                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
-                                    <Truck className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-bold text-sm md:text-base">Express Delivery</h4>
-                                    <p className="text-xs text-white/60">Get online in 3-5 days</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-center md:justify-start gap-4">
-                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
-                                    <Crown className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-bold text-sm md:text-base">Affordable Pricing</h4>
-                                    <p className="text-xs text-white/60">Starting at just ₹5000</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-center md:justify-start gap-4">
-                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
-                                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-bold text-sm md:text-base">Support 24/7</h4>
-                                    <p className="text-xs text-white/60">We are happy to help you anytime.</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-center md:justify-start gap-4">
-                                <div className="p-2 md:p-3 rounded-full border border-white/20 bg-white/5">
-                                    <Layout className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-bold text-sm md:text-base">Advance Designs</h4>
-                                    <p className="text-xs text-white/60">SEO optimized & Mobile Friendly</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </section>
         </>
     );

@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
     Globe,
     Search,
     Share2,
     Database,
-    Settings,
+    Smartphone,
     Layout,
     PenTool,
     Image as ImageIcon,
@@ -20,22 +21,25 @@ interface Service {
     description: string;
     icon: any;
     color: string;
+    href?: string;
 }
 
 const services: Service[] = [
     {
         id: 1,
-        title: "Website Building",
+        title: "Web Development",
         description: "Custom-built, high-performance websites that represent your brand and scale with your business.",
         icon: Globe,
-        color: "blue"
+        color: "blue",
+        href: "/services/web-development"
     },
     {
         id: 2,
         title: "SEO Optimization",
         description: "Dominate search results and drive organic traffic with our data-driven SEO strategies.",
         icon: Search,
-        color: "emerald"
+        color: "emerald",
+        href: "/services/seo-optimization"
     },
     {
         id: 3,
@@ -53,17 +57,19 @@ const services: Service[] = [
     },
     {
         id: 5,
-        title: "Admin Panels",
-        description: "Powerful internal tools designed to give you complete control over your business data.",
-        icon: Settings,
-        color: "rose"
+        title: "App Development",
+        description: "Native and cross-platform mobile apps that deliver seamless user experiences on iOS and Android.",
+        icon: Smartphone,
+        color: "rose",
+        href: "/services/app-development"
     },
     {
         id: 6,
         title: "UI/UX Design",
         description: "Creating intuitive and beautiful digital products that your users will love using.",
         icon: Layout,
-        color: "indigo"
+        color: "indigo",
+        href: "/services/ui-ux-design"
     },
     {
         id: 7,
@@ -98,28 +104,33 @@ export function ServiceGrid() {
                                 ease: "easeOut"
                             }}
                             whileHover={{ y: -10 }}
-                            className="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+                            className="h-full"
                         >
-                            {/* Icon Container */}
-                            <div className={`mb-6 inline-flex p-4 rounded-2xl bg-${service.color}-50 text-${service.color}-600 group-hover:scale-110 transition-transform duration-300`}>
-                                <service.icon className="w-8 h-8" />
-                            </div>
-
-                            {/* Gradient Background Effect on Hover */}
-                            <div className={`absolute inset-0 bg-gradient-to-br from-${service.color}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
-                            <div className="relative z-10">
-                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                                    {service.title}
-                                </h3>
-                                <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                                    {service.description}
-                                </p>
-
-                                <div className="flex items-center text-sm font-bold text-slate-400 group-hover:text-blue-600 transition-colors">
-                                    Explore More <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                            <Link 
+                                href={service.href || "#contact"} 
+                                className="block h-full group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+                            >
+                                {/* Icon Container */}
+                                <div className={`mb-6 inline-flex p-4 rounded-2xl bg-${service.color}-50 text-${service.color}-600 group-hover:scale-110 transition-transform duration-300`}>
+                                    <service.icon className="w-8 h-8" />
                                 </div>
-                            </div>
+
+                                {/* Gradient Background Effect on Hover */}
+                                <div className={`absolute inset-0 bg-gradient-to-br from-${service.color}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+                                <div className="relative z-10">
+                                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                                        {service.description}
+                                    </p>
+
+                                    <div className="flex items-center text-sm font-bold text-slate-400 group-hover:text-blue-600 transition-colors">
+                                        Explore More <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

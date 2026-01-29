@@ -12,26 +12,48 @@ interface ContactFormProps {
 export function ContactForm({ isOpen, onClose }: ContactFormProps) {
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
         phone: "",
+        requirement: "",
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Show success animation
-        setIsSubmitted(true);
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/info@digitechavenue.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _subject: "New Quote Request - DigitechAvenue",
+                    _template: "table"
+                })
+            });
 
-        // Reset form and close after animation
-        setTimeout(() => {
-            setFormData({ name: "", email: "", phone: "" });
-            setIsSubmitted(false);
-            onClose();
-        }, 2500);
+            if (response.ok) {
+                // Show success animation
+                setIsSubmitted(true);
+
+                // Reset form and close after animation
+                setTimeout(() => {
+                    setFormData({ name: "", phone: "", requirement: "" });
+                    setIsSubmitted(false);
+                    onClose();
+                }, 1500);
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Error submitting form. Please check your internet connection.");
+        }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -92,7 +114,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10"
+                                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10"
                             >
                                 <X className="w-5 h-5 text-white/70" />
                             </button>
@@ -167,22 +189,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                                         />
                                     </div>
 
-                                    {/* Email Input */}
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
-                                            Email Address
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20 transition-all"
-                                            placeholder="john@example.com"
-                                        />
-                                    </div>
+
 
                                     {/* Phone Input */}
                                     <div>
@@ -199,6 +206,30 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                                             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20 transition-all"
                                             placeholder="+91 98765 43210"
                                         />
+                                    </div>
+
+                                    {/* Requirement Dropdown */}
+                                    <div>
+                                        <label htmlFor="requirement" className="block text-sm font-medium text-white/80 mb-2">
+                                            Requirement
+                                        </label>
+                                        <select
+                                            id="requirement"
+                                            name="requirement"
+                                            value={formData.requirement}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20 transition-all appearance-none"
+                                        >
+                                            <option value="" className="bg-[#1a1a1a] text-gray-400">Select Service</option>
+                                            <option value="website" className="bg-[#1a1a1a]">Website</option>
+                                            <option value="app" className="bg-[#1a1a1a]">App</option>
+                                            <option value="crm" className="bg-[#1a1a1a]">CRM</option>
+                                            <option value="custom-software" className="bg-[#1a1a1a]">Custom Software</option>
+                                            <option value="logo" className="bg-[#1a1a1a]">Logo</option>
+                                            <option value="digital-marketing" className="bg-[#1a1a1a]">Digital Marketing</option>
+                                            <option value="seo" className="bg-[#1a1a1a]">SEO</option>
+                                        </select>
                                     </div>
 
                                     {/* Submit Button */}

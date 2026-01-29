@@ -12,16 +12,35 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/" className="flex items-center gap-2 mb-6 group">
-                            <span className="text-2xl font-extrabold tracking-tight text-slate-900">
-                                DigitechAvenue
-                            </span>
+                            <Image 
+                                src="/images/Group 115.svg"
+                                alt="DigitechAvenue" 
+                                width={250} 
+                                height={70} 
+                                className="h-14 w-auto object-contain"
+                            />
                         </Link>
                         <p className="text-slate-600 mb-6 leading-relaxed">
                             Building digital experiences that drive growth and innovation. Expert web development solutions for modern businesses.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="p-2 bg-white rounded-full border border-gray-200 hover:border-black hover:bg-black hover:text-white transition-all">
+                            <a 
+                                href="https://www.instagram.com/digitech.avenue/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="p-2 bg-white rounded-full border border-gray-200 text-pink-600 hover:border-pink-500 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-500 hover:text-white transition-all duration-300"
+                                aria-label="Instagram"
+                            >
                                 <Instagram className="w-5 h-5" />
+                            </a>
+                            <a 
+                                href="https://www.linkedin.com/in/digitech-avenue-1483473a7/?originalSubdomain=in" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="p-2 bg-white rounded-full border border-gray-200 text-blue-700 hover:border-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-300"
+                                aria-label="LinkedIn"
+                            >
+                                <Linkedin className="w-5 h-5" />
                             </a>
                         </div>
                     </div>
@@ -30,20 +49,20 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-slate-900 mb-6">Services</h4>
                         <ul className="space-y-4">
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">Web Development</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">App Development</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">UI/UX Design</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">SEO Optimization</a></li>
+                            <li><Link href="/services/web-development" className="text-slate-600 hover:text-black hover:underline transition-all">Web Development</Link></li>
+                            <li><Link href="/services/app-development" className="text-slate-600 hover:text-black hover:underline transition-all">App Development</Link></li>
+                            <li><Link href="/services/ui-ux-design" className="text-slate-600 hover:text-black hover:underline transition-all">UI/UX Design</Link></li>
+                            <li><Link href="/services/seo-optimization" className="text-slate-600 hover:text-black hover:underline transition-all">SEO Optimization</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-slate-900 mb-6">Company</h4>
                         <ul className="space-y-4">
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">About Us</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">Projects</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">Testimonials</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-black hover:underline transition-all">Contact</a></li>
+                            <li><Link href="/" className="text-slate-600 hover:text-black hover:underline transition-all">About Us</Link></li>
+                            <li><Link href="/projects" className="text-slate-600 hover:text-black hover:underline transition-all">Projects</Link></li>
+                            <li><Link href="/#testimonials" className="text-slate-600 hover:text-black hover:underline transition-all">Testimonials</Link></li>
+                            <li><Link href="/contact" className="text-slate-600 hover:text-black hover:underline transition-all">Contact</Link></li>
                         </ul>
                     </div>
 
