@@ -81,7 +81,7 @@ export default function SeoOptimizationPage() {
                              </div>
                              <h3 className="text-xl font-bold text-slate-900 mb-3">Off-Page SEO</h3>
                              <p className="text-slate-600 leading-relaxed text-sm">
-                                 Building high-quality backlinks and domain authority to establish your brand's credibility and trust.
+                                 Building high-quality backlinks and domain authority to establish your brand&apos;s credibility and trust.
                              </p>
                          </div>
                     </div>

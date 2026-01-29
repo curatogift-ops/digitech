@@ -199,7 +199,7 @@ export default function BlogPost() {
                    <div className="flex flex-col md:flex-row gap-8 mb-8">
                       <div className="flex-1">
                          <p className="text-slate-300 mb-6">
-                            We don't just build websites; we build business solutions. Get a dynamic, e-commerce ready site starting at just <span className="text-green-400 font-bold">₹4,999</span>.
+                             We don&apos;t just build websites; we build business solutions. Get a dynamic, e-commerce ready site starting at just <span className="text-green-400 font-bold">₹4,999</span>.
                          </p>
                          <div className="flex flex-wrap gap-3">
                             {['Pay After Demo', 'Zero Risk', 'Mobile Friendly'].map(tag => (
