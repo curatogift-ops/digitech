@@ -12,7 +12,7 @@ import {
   Box,
   Briefcase,
   Compass,
-  HexAGON,
+  Hexagon,
   Infinity as InfinityIcon, // Using alias to avoid naming conflict
   Flame,
   Layout,
@@ -52,7 +52,7 @@ export function Brands() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#111111] uppercase tracking-[-0.02em] font-heading mb-4"
           >
-            WE'RE TRUSTED BY MORE THAN 1600+ CLIENTS.
+            WE&apos;RE TRUSTED BY MORE THAN 1600+ CLIENTS.
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}

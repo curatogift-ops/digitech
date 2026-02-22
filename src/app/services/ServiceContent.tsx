@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Globe, Code2, Search, TrendingUp, Palette, Smartphone, Megaphone, Share2, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const mainServices = [
@@ -139,7 +140,7 @@ export function ServiceContent() {
                    {service.footer && (
                      <div className="pt-6 border-t border-slate-100">
                         <p className="text-sm font-semibold text-slate-500 italic">
-                          "{service.footer}"
+                          &quot;{service.footer}&quot;
                         </p>
                      </div>
                    )}
@@ -164,9 +165,9 @@ export function ServiceContent() {
                 </h2>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <a href="/#contact" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-100 transition-colors flex items-center gap-2">
+                  <Link href="/#contact" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-100 transition-colors flex items-center gap-2">
                     Get Free Consultation <ArrowRight className="w-5 h-5" />
-                  </a>
+                  </Link>
                 </div>
               </div>
            </div>

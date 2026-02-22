@@ -35,7 +35,7 @@ export function CTA() {
                         transition={{ delay: 0.1 }}
                         className="text-lg md:text-xl text-white/90 font-medium leading-relaxed"
                     >
-                        Get a free consultation and demo design today. Let's create something extraordinary together.
+                        Get a free consultation and demo design today. Let&apos;s create something extraordinary together.
                     </motion.p>
                 </div>
 

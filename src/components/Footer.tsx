@@ -16,7 +16,7 @@ export function Footer() {
           
           <div className="space-y-4 max-w-2xl relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-[#111111] leading-tight font-heading">
-              Let's Get Your Project Started!
+              Let&apos;s Get Your Project Started!
             </h2>
             <p className="text-[#6B7280] text-lg leading-relaxed">
               Still waiting for a Website & Digital marketing agency for your Business?

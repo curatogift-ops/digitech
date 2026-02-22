@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, Instagram, Facebook, Linkedin, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -79,12 +80,12 @@ export function Header() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center shrink-0 group">
+          <Link href="/" className="flex items-center shrink-0 group">
             <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-0.5 tracking-tight text-[#111111] group-hover:opacity-90 transition-opacity font-heading">
               Digitech<span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Avenue</span>
               <span className="text-[10px] align-top relative -top-3 text-slate-400">®</span>
             </h2>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1 h-full">

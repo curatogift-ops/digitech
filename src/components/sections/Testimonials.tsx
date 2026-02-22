@@ -41,7 +41,7 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#111111] tracking-tight font-heading"
           >
-            What Our <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Client's Say</span>
+            What Our <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Client&apos;s Say</span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}

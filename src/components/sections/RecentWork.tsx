@@ -58,7 +58,7 @@ export function RecentWork() {
             transition={{ delay: 0.1 }}
             className="text-lg sm:text-xl text-[#111111] font-bold font-heading leading-relaxed max-w-3xl mx-auto"
           >
-            We work with our partners to let their brand thrive to the best as we strongly believe that "Together, we build better"
+            We work with our partners to let their brand thrive to the best as we strongly believe that &quot;Together, we build better&quot;
           </motion.p>
         </div>
 
