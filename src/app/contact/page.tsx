@@ -1,171 +1,113 @@
-"use client";
+import type { Metadata } from "next";
+import { ContactPageForm } from "@/components/ContactPageForm";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Phone, MapPin, Send } from "lucide-react";
-import { useState } from "react";
+export const metadata: Metadata = {
+  title: "Contact Web Design Agency | Digitech Avenue",
+  description: "Contact Digitech Avenue for professional web design and digital marketing services. We respond quickly and provide honest guidance.",
+};
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: ""
-    });
-    const [isSubmitted, setIsSubmitted] = useState(false);
+  return (
+    <main className="bg-white min-h-screen pt-24 pb-20">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Column: Contact Info */}
+          <div className="flex flex-col h-full">
+            <span className="text-[#2563EB] font-bold text-lg mb-4 tracking-wide uppercase">Get In Touch</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Contact Digitech Avenue
+            </h1>
+            <div className="text-slate-600 text-lg leading-relaxed mb-8 max-w-xl space-y-4">
+              <p className="font-medium text-slate-900">
+                Let’s discuss your website or digital marketing project. 
+                We respond quickly and provide honest guidance.
+              </p>
+              <p>
+                Whether you need a new website, SEO services, or marketing strategy, our team is ready to help. 
+                Tell us about your project and we will provide a free consultation.
+              </p>
+            </div>
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            const response = await fetch("https://formsubmit.co/ajax/info@digitechavenue.com", {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    _subject: "New Contact Request - DigitechAvenue",
-                })
-            });
+            <div className="mb-10 p-4 bg-slate-50 border border-slate-100 rounded-xl">
+               <p className="font-bold text-slate-900 text-center uppercase tracking-wider text-sm">
+                 Professional support • Transparent process • Long-term Relationship
+               </p>
+            </div>
 
-            if (response.ok) {
-                setIsSubmitted(true);
-                setFormData({ name: "", phone: "" });
-                // Reset success message after 3 seconds
-                setTimeout(() => setIsSubmitted(false), 3000);
-            } else {
-                alert("Something went wrong. Please try again.");
-            }
-        } catch (error) {
-            alert("Error submitting form.");
-        }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    return (
-        <main className="min-h-screen bg-white">
-            <Header />
-
-            {/* Hero Section */}
-            <section className="pt-32 pb-12 bg-slate-900 border-b border-slate-800">
-                <div className="container mx-auto px-6 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Contact Us</h1>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                        Get in touch with us. We are here to help you grow your business.
-                    </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 mt-auto">
+              {/* Item 1: Office */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2563EB]/10 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-[#2563EB]" />
                 </div>
-            </section>
-
-            <section className="py-20 bg-slate-50">
-                <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 overflow-hidden bg-white rounded-3xl shadow-xl">
-                        
-                        {/* Map & Info Column */}
-                        <div className="bg-slate-900 p-10 text-white relative flex flex-col justify-between">
-                            <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10 pointer-events-none" />
-                            
-                            {/* Contact Details */}
-                            <div className="space-y-8 relative z-10 mb-12">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 shrink-0">
-                                        <Phone className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold mb-1">Call Us</h3>
-                                        <p className="text-slate-300 font-medium">+91 79969 98142</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-400 shrink-0">
-                                        <MapPin className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold mb-1">Visit Us</h3>
-                                        <p className="text-slate-300">
-                                            1st B St, Gokula Extension, Mathikere Extension,<br />
-                                            Mathikere, Bengaluru, Karnataka 560054
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Google Map */}
-                            <div className="rounded-2xl overflow-hidden h-64 border border-slate-700 relative z-10 shadow-lg">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.993510967397!2d77.55836267597157!3d13.036104713467471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d6f1c48545b%3A0xe5a285d68117d919!2sDigitech%20Avenue!5e0!3m2!1sen!2sin!4v1706553812345!5m2!1sen!2sin" 
-                                    width="100%" 
-                                    height="100%" 
-                                    style={{ border: 0 }} 
-                                    allowFullScreen 
-                                    loading="lazy" 
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                ></iframe>
-                            </div>
-                        </div>
-
-                        {/* Form Column */}
-                        <div className="p-10 lg:p-16 flex items-center">
-                            <div className="w-full">
-                                <h2 className="text-3xl font-bold text-slate-900 mb-2">Send us a message</h2>
-                                <p className="text-slate-500 mb-8">We will call you back shortly.</p>
-
-                                {isSubmitted ? (
-                                    <motion.div 
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-xl flex items-center gap-3"
-                                    >
-                                       <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center">✓</div>
-                                       <div>
-                                            <p className="font-bold">Message Sent!</p>
-                                            <p className="text-sm">We will contact you on your provided number.</p>
-                                       </div>
-                                    </motion.div>
-                                ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div>
-                                            <label className="block text-sm font-bold text-slate-700 mb-2">Your Name</label>
-                                            <input 
-                                                type="text" 
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                                required
-                                                className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-                                                placeholder="Enter your full name"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                                            <input 
-                                                type="tel" 
-                                                name="phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                                required
-                                                className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-                                                placeholder="+91 00000 00000"
-                                            />
-                                        </div>
-
-                                        <button 
-                                            type="submit"
-                                            className="w-full py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10 flex items-center justify-center gap-2"
-                                        >
-                                            Submit <Send className="w-4 h-4" />
-                                        </button>
-                                    </form>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg mb-1">Our Office</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
+                    1st B St, Gokula Extension, Mathikere Extension, <br/>
+                    Mathikere, Bengaluru, Karnataka 560054
+                  </p>
                 </div>
-            </section>
+              </div>
 
-            <Footer />
-        </main>
-    );
+              {/* Item 2: Email */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2563EB]/10 flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-[#2563EB]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg mb-1">Email Information</h3>
+                  <a href="mailto:info@digitechavenue.com" className="text-slate-600 text-sm hover:text-[#2563EB] transition-colors block">
+                    info@digitechavenue.com
+                  </a>
+
+                </div>
+              </div>
+
+              {/* Item 3: Calling */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2563EB]/10 flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-[#2563EB]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg mb-1">Calling Support</h3>
+                  <a href="tel:+917996998142" className="text-slate-600 text-sm hover:text-[#2563EB] transition-colors block">
+                    +91 799 699 8142
+                  </a>
+
+                </div>
+              </div>
+
+              {/* Item 4: Whatsapp */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2563EB]/10 flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-[#2563EB]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg mb-1">Whatsapp Support</h3>
+                  <a href="https://wa.me/917996998142" target="_blank" className="text-slate-600 text-sm hover:text-[#2563EB] transition-colors block">
+                    +91 799 699 8142
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Form */}
+          <div className="bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 md:p-10 lg:p-12 relative overflow-hidden">
+             {/* Decorative top border */}
+             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#2563EB] to-[#06B6D4]" />
+             
+             <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">
+               Get A <span className="text-[#2563EB]">FREE</span> Consultation!
+             </h2>
+
+             <ContactPageForm />
+          </div>
+        </div>
+      </div>
+    </main>
+  );
 }

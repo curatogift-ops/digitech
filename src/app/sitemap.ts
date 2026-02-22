@@ -1,30 +1,32 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
-        {
-            url: "https://digitechavenue.vercel.app",
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 1,
-        },
-        {
-            url: "https://digitechavenue.vercel.app/#services",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: "https://digitechavenue.vercel.app/#projects",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: "https://digitechavenue.vercel.app/#pricing",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.9,
-        },
-    ];
+  const baseUrl = 'https://digitechavenue.vercel.app'; // Update to the real live domain if different
+
+  return [
+    {
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    },
+  ];
 }

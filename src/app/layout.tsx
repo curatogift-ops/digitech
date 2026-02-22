@@ -1,44 +1,37 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-sans",
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "DigitechAvenue - Professional Web Development & Digital Solutions",
-  description: "Transform your online presence with DigitechAvenue. Expert web development, custom software solutions, and digital consulting services. Fast delivery, premium quality, SEO-optimized websites.",
-  keywords: ["web development", "software development", "digital solutions", "SEO optimization", "custom websites", "mobile apps", "consulting", "digitechavenue"],
+  title: "Digitech Avenue | Modern Digital Experience Studio",
+  description: "A Modern Digital Experience Studio where performance meets design intelligence. We build high-end products, not just websites.",
+  keywords: ["digital studio", "web design", "product design", "Digitech Avenue", "high-end web development"],
   authors: [{ name: "DigitechAvenue" }],
   creator: "DigitechAvenue",
   publisher: "DigitechAvenue",
   metadataBase: new URL("https://digitechavenue.vercel.app"),
   openGraph: {
-    title: "DigitechAvenue - Professional Web Development & Digital Solutions",
-    description: "Transform your online presence with expert web development, custom software, and digital consulting services.",
+    title: "Digitech Avenue | Modern Digital Experience Studio",
+    description: "Where performance meets design intelligence.",
     url: "https://digitechavenue.vercel.app",
-    siteName: "DigitechAvenue",
+    siteName: "Digitech Avenue",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DigitechAvenue - Professional Web Development",
-    description: "Expert web development and digital solutions for your business",
+    title: "Digitech Avenue | Modern Digital Experience Studio",
+    description: "Where performance meets design intelligence.",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
   icons: {
     icon: [
@@ -52,6 +45,8 @@ export const metadata: Metadata = {
 };
 
 import { FloatingContact } from "@/components/FloatingContact";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -62,9 +57,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         suppressHydrationWarning
-        className={`${plusJakartaSans.variable} antialiased bg-white text-slate-900 font-sans`}
+        className={`${lexend.variable} font-lexend antialiased bg-[#F8FAFC] text-[#111111] selection:bg-[#2563EB]/20 selection:text-[#2563EB]`}
       >
+        <Header />
         {children}
+        <Footer />
         <FloatingContact />
       </body>
     </html>

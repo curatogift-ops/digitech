@@ -102,7 +102,7 @@ export function Pricing() {
                                 </p>
 
                                 <motion.a
-                                    href="https://wa.me/918652111486"
+                                    href="https://wa.me/917996998142"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.02 }}
@@ -116,7 +116,7 @@ export function Pricing() {
                             <ul className="space-y-4">
                                 {plan.features.map((feature, idx) => (
                                     <li key={idx} className="flex items-start gap-3">
-                                        <Check className="w-5 h-5 mt-0.5 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                                        <Check className="w-5 h-5 mt-0.5 text-green-500 group-hover:text-green-600 transition-colors" />
                                         <span className="text-sm md:text-base text-slate-700">{feature}</span>
                                     </li>
                                 ))}

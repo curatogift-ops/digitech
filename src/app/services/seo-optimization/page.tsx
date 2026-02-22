@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+    import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, BarChart3, Globe, Search, RefreshCw, LineChart, Target } from "lucide-react";

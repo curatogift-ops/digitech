@@ -170,7 +170,7 @@ export default function TermsPage() {
             </p>
             <div className="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm">
               <Phone className="w-5 h-5 text-blue-400" />
-              <span className="font-medium">7996998142</span>
+              <span className="font-medium">+91 799 699 8142</span>
             </div>
           </motion.div>
         </div>
