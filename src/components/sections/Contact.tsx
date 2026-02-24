@@ -171,8 +171,7 @@ export function Contact() {
               />
               {/* Name Overlay block matching modern consultant tags */}
               <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#111111]/90 via-[#111111]/40 to-transparent p-6 pt-12 text-white text-center">
-                 <h3 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight drop-shadow-md">Sayyad Shabaz</h3>
-                 <p className="opacity-90 text-sm font-medium mt-1">Digital Marketing Expert</p>
+                 <h3 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight drop-shadow-md pb-1">Sayyad Shabaz</h3>
               </div>
             </div>
 

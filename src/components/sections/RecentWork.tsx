@@ -73,17 +73,7 @@ export function RecentWork() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex flex-col group cursor-pointer border border-slate-100 shadow-md hover:shadow-2xl transition-shadow duration-500 overflow-hidden"
             >
-              {/* Image Window (The scrolling part) */}
-              <div className="relative w-full h-[350px] sm:h-[400px] lg:h-[450px] overflow-hidden bg-[#F8FAFC]">
-                {/* Scrolling Background Layer */}
-                <div 
-                  className="w-full h-full bg-top bg-no-repeat transition-all duration-[5s] ease-in-out group-hover:bg-bottom"
-                  style={{ 
-                    backgroundImage: `url(${project.image})`,
-                    backgroundSize: '100% auto'
-                  }}
-                />
-              </div>
+
 
               {/* Title Bar Block */}
               <div className={`${project.bgColor} py-5 px-4 text-center w-full transition-colors duration-300`}>
