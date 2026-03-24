@@ -1,140 +1,124 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Settings, Check } from "lucide-react";
+import { Globe, Paintbrush, Smartphone, Search, Megaphone, ShoppingBag, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+
+const services = [
+  {
+    icon: Globe,
+    title: "Web Design & Development",
+    description: "High-performance websites built with cutting-edge technology and conversion-focused design.",
+    href: "/services/web-development",
+  },
+  {
+    icon: Paintbrush,
+    title: "UI/UX Design",
+    description: "Beautiful, intuitive interfaces that delight users and drive engagement.",
+    href: "/services/graphic-designing",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    description: "Native and cross-platform apps that deliver exceptional mobile experiences.",
+    href: "/services/web-development",
+  },
+  {
+    icon: Search,
+    title: "SEO & Digital Marketing",
+    description: "Data-driven strategies that put you in front of the right audience at the right time.",
+    href: "/services/seo-services",
+  },
+  {
+    icon: Megaphone,
+    title: "Brand Identity",
+    description: "Distinctive brand systems that tell your story and set you apart from the competition.",
+    href: "/services/graphic-designing",
+  },
+  {
+    icon: ShoppingBag,
+    title: "E-Commerce Solutions",
+    description: "Online stores that convert browsers into buyers with seamless shopping experiences.",
+    href: "/services/e-commerce",
+  },
+];
 
 export function Services() {
-  const cards = [
-    {
-      title: "Web Development",
-      image: "/services/webdev.png",
-      items: [
-        "Business Website",
-        "E-Commerce Website",
-        "Portfolio Website",
-        "Online Learning Website",
-        "Landing pages",
-        "Job Portals",
-      ]
-    },
-    {
-      title: "Digital Marketing",
-      image: "/services/marketing.png",
-      items: [
-        "Website Enhancement",
-        "Online Marketing",
-        "ORM Service",
-        "Online Presence",
-        "PPC Google Ads",
-        "SEO Friendly Content",
-      ]
-    },
-    {
-      title: "Graphic Designing",
-      image: "/services/design.png",
-      items: [
-        "Logo Design",
-        "Packaging Design",
-        "Social Media Creatives",
-        "Banner & Poster Design",
-        "Brochure Design",
-        "Web & App UI Design",
-      ]
-    },
-    {
-      title: "E-Commerce",
-      image: "/services/ecommerce.png",
-      items: [
-        "E-Commerce Website",
-        "Amazon Listing",
-        "Flipkart Listing",
-        "Myntra Listing",
-        "Facebook Marketplace",
-        "Google Marketplace",
-      ]
-    }
-  ];
-
   return (
-    <section id="services" className="py-12 md:py-16 lg:py-20 bg-[#FAFAFA] relative overflow-hidden">
-      {/* Decorative dotted circles (similar to image) */}
-      <div className="absolute top-12 left-8 md:left-[10%] w-[120px] h-[120px] border-[1.5px] border-dashed border-[#ec4899]/30 rounded-full animate-[spin_60s_linear_infinite] pointer-events-none" />
-      <div className="absolute -top-10 right-4 md:right-[20%] w-[180px] h-[180px] border-[1.5px] border-dashed border-[#ec4899]/20 rounded-full animate-[spin_50s_linear_infinite_reverse] pointer-events-none" />
-      <div className="absolute bottom-12 left-4 md:left-[15%] w-[150px] h-[150px] border-[1.5px] border-dashed border-[#ec4899]/30 rounded-full animate-[spin_80s_linear_infinite] pointer-events-none" />
-      <div className="absolute -bottom-16 right-8 md:right-[5%] w-[200px] h-[200px] border-[1.5px] border-dashed border-[#ec4899]/20 rounded-full animate-[spin_40s_linear_infinite_reverse] pointer-events-none" />
+    <section id="services" className="py-20 md:py-28 bg-[#0A0F1A] relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00E5FF]/3 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#FFD700]/2 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 w-full max-w-[1400px]">
-        
-        {/* Header Section */}
-        <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
-          <motion.div
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.span
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="inline-flex items-center gap-2 bg-white border border-slate-200 text-[#111111] text-sm font-semibold px-5 py-2.5 rounded-full mb-6 shadow-sm z-20 relative"
+            viewport={{ once: true }}
+            className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-4"
           >
-            <Settings className="w-4 h-4 text-[#ef4444] animate-[spin_4s_linear_infinite]" />
-            Featured Services
-          </motion.div>
-          
+            What We Do
+          </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-[#111111] leading-[1.2] font-heading"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F0F4FF] leading-[1.1] mb-6"
           >
-            We provide additional services that will <br className="hidden lg:block" />
-            Grow your Business
+            Services That{" "}
+            <span className="text-gradient-cyan">Drive Growth</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-[#8A9BB5] text-lg"
+          >
+            End-to-end digital solutions tailored to your brand. Every project is built with usability, speed, and conversion in mind.
+          </motion.p>
         </div>
 
-        {/* 4-Column Grid Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
-          {cards.map((card, index) => (
+        {/* Services Grid — 3x2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {services.map((service, index) => (
             <motion.div
-              key={index}
+              key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="bg-white rounded-2xl md:rounded-[2rem] pt-6 md:pt-8 pb-8 md:pb-10 px-3 sm:px-6 flex flex-col items-center shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 group relative z-10"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              {/* Illustration Image */}
-              <div className="w-[110px] h-[110px] sm:w-[150px] sm:h-[150px] md:w-[200px] md:h-[200px] mb-4 sm:mb-6 relative transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 mix-blend-multiply">
-                <Image 
-                  src={card.image} 
-                  alt={card.title} 
-                  fill
-                  sizes="(max-width: 768px) 110px, 200px"
-                  style={{ objectFit: 'contain' }}
-                  className="drop-shadow-sm" 
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = "none";
-                  }}
-                />
-              </div>
+              <Link
+                href={service.href}
+                className="group glass-card rounded-2xl p-7 lg:p-8 flex flex-col h-full hover:border-[rgba(0,229,255,0.18)] hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-900/20 transition-all duration-500"
+              >
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-[rgba(0,229,255,0.08)] border border-[rgba(0,229,255,0.15)] flex items-center justify-center mb-5 group-hover:bg-[rgba(0,229,255,0.15)] group-hover:scale-110 transition-all duration-300">
+                  <service.icon className="w-6 h-6 text-[#00E5FF]" />
+                </div>
 
-              {/* Card Title */}
-              <h3 className="text-base sm:text-xl md:text-2xl font-bold text-[#111111] mb-3 sm:mb-6 text-center font-heading leading-tight w-full max-w-[200px]">
-                {card.title}
-              </h3>
-              
-              {/* Features List */}
-              <ul className="space-y-2 sm:space-y-3.5 w-full flex-grow">
-                {card.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start text-[#374151] font-medium text-[0.675rem] sm:text-[0.95rem] group/item">
-                    <Check className="w-3 h-3 sm:w-4 sm:h-4 text-[#111111] opacity-70 mr-1.5 sm:mr-2.5 mt-0.5 sm:mt-1 flex-shrink-0 group-hover/item:text-[#2563EB] group-hover/item:opacity-100 transition-colors" strokeWidth={3} />
-                    <span className="leading-snug">{item}</span>
-                  </li>
-                ))}
-              </ul>
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-lg font-bold text-[#F0F4FF] group-hover:text-[#00E5FF] transition-colors">
+                    {service.title}
+                  </h3>
+                  <ArrowUpRight className="w-5 h-5 text-[#8A9BB5] opacity-0 group-hover:opacity-100 group-hover:text-[#00E5FF] transition-all -translate-y-1 group-hover:translate-y-0" />
+                </div>
+
+                <p className="text-[#8A9BB5] text-sm leading-relaxed flex-1">
+                  {service.description}
+                </p>
+
+                <span className="mt-4 text-sm font-semibold text-[#00E5FF] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                  Learn More <ArrowUpRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

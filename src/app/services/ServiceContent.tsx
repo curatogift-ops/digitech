@@ -2,144 +2,178 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Globe, Code2, Search, TrendingUp, Palette, Smartphone, Megaphone, Share2, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Globe, Search, Palette, Megaphone, ArrowUpRight, CheckCircle2, ShoppingCart, Rocket, Code2 } from "lucide-react";
 
 const mainServices = [
   {
-    title: "Website Design & Development",
-    description: "We build modern, responsive websites designed for speed, SEO, and conversion.",
+    title: "Premium Web Engineering",
+    description: "We build bespoke, high-performance websites designed for speed, SEO domination, and conversion excellence.",
     icon: Globe,
+    accent: "from-[#00E5FF] to-[#00B8D4]",
     features: [
-      "Business website design",
-      "Custom website development",
-      "E-commerce websites",
-      "Landing page design",
-      "Mobile responsive websites",
-      "Website redesign services"
+      "Custom Full-Stack Development",
+      "Next.js 14 & React Architecture",
+      "Luxury Portfolio & Brand Sites",
+      "High-Performance Landing Pages",
+      "Advanced Mobile Responsiveness",
+      "SEO-First Code Structure"
     ],
-    footer: "Every website is optimized for Google search and mobile performance."
+    footer: "Engineered for 99.9% uptime and sub-2s load speeds."
   },
   {
-    title: "SEO Services for Business Growth",
-    description: "Our SEO services help businesses rank higher on Google and attract qualified customers.",
+    title: "SEO Domination Systems",
+    description: "Our data-driven SEO strategies push your brand to the top of Google results to capture high-intent traffic.",
     icon: Search,
+    accent: "from-[#FFD700] to-[#FFA500]",
     features: [
-      "Technical SEO optimization",
-      "Local SEO for businesses",
-      "On-page SEO improvements",
-      "Keyword research strategy",
-      "SEO content structure",
-      "Google indexing setup"
+      "Technical Authority SEO",
+      "Local Dominance Strategy",
+      "On-Page Content Engineering",
+      "Strategic Keyword Acquisition",
+      "Advanced Schema Integration",
+      "Google Search Console Setup"
     ],
-    footer: "SEO is a long-term growth engine."
+    footer: "SEO isn't a cost — it's your primary growth engine."
   },
   {
-    title: "UI/UX Design Services",
-    description: "Professional interface design improves user experience and customer trust.",
+    title: "Luxury UI/UX Architecture",
+    description: "Bespoke interface design that combines high-end aesthetics with psychology-driven user experience.",
     icon: Palette,
+    accent: "from-[#00E5FF] to-[#7C3AED]",
     features: [
-      "Clean modern interfaces",
-      "Conversion-focused layouts",
-      "Mobile-first designs",
-      "Brand-consistent visuals"
+      "Bespoke Visual Identity",
+      "Conversion-Focused Interface",
+      "High-Fidelity Prototyping",
+      "Behavioral User Journeys",
+      "Modern Interaction Design",
+      "Brand System Development"
     ],
-    footer: "Good design builds credibility instantly."
+    footer: "Premium design builds instant credibility and trust."
   },
   {
-    title: "Digital Marketing Solutions",
-    description: "We help businesses grow with targeted marketing strategies.",
+    title: "Performance Marketing",
+    description: "Scalable digital marketing strategies that turn attention into revenue through precision targeting.",
     icon: Megaphone,
+    accent: "from-[#F0F4FF] to-[#8A9BB5]",
     features: [
-      "Search engine marketing",
-      "Social media marketing",
-      "Conversion optimization",
-      "Analytics tracking"
+      "Precision PPC & Google Ads",
+      "Authority Social Marketing",
+      "ROI-Focused Ad Strategy",
+      "Marketing Analytics Suite",
+      "Retargeting Ecosystems",
+      "Lead Magnet Engineering"
     ],
-    footer: ""
+    footer: "Maximize your ROI with data-backed campaigns."
+  },
+  {
+    title: "E-Commerce Engineering",
+    description: "Full-scale online commerce platforms built for massive scale, security, and seamless checkouts.",
+    icon: ShoppingCart,
+    accent: "from-[#00E5FF] to-[#00B8D4]",
+    features: [
+      "Shopify & Custom E-Comm",
+      "Secure Payment Architectures",
+      "Inventory Sync Systems",
+      "Subscription Model Engineering",
+      "User Accounts & Dashboards",
+      "Advanced Product Filtering"
+    ],
+    footer: "Turn browsers into buyers with a friction-free experience."
+  },
+  {
+    title: "SaaS & App Development",
+    description: "Scalable software products and mobile applications built for the modern digital economy.",
+    icon: Code2,
+    accent: "from-[#FFD700] to-[#00E5FF]",
+    features: [
+      "Native iOS & Android Apps",
+      "Progressive Web Applications",
+      "SaaS MVP Engineering",
+      "Cloud Infrastructure Setup",
+      "API Integration & Design",
+      "Scalable Backend Systems"
+    ],
+    footer: "Building the future of digital solutions, today."
   }
 ];
 
 export function ServiceContent() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#080C14] text-[#F0F4FF] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-[#F9FAFB] relative overflow-hidden">
+      <section className="pt-32 pb-20 md:pt-44 md:pb-28 relative overflow-hidden">
         {/* Abstract Backgrounds */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[100px] mix-blend-multiply opacity-50" />
-           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-100/40 rounded-full blur-[100px] mix-blend-multiply opacity-50" />
-        </div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00E5FF]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#FFD700]/3 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-4xl mx-auto">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 text-center max-w-5xl">
           <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 shadow-sm text-sm font-semibold text-[#2563EB] mb-6"
+             initial={{ opacity: 0, scale: 0.9 }}
+             animate={{ opacity: 1, scale: 1 }}
+             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.2)] text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-8"
            >
-             <span className="flex h-2 w-2 relative">
-               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-             </span>
-             Services
+              Our Capability
            </motion.div>
            
            <motion.h1 
-             initial={{ opacity: 0, y: 20 }}
+             initial={{ opacity: 0, y: 30 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-slate-900 mb-6 leading-tight"
+             className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-8 leading-[1.05] tracking-tight"
            >
-             Professional Website & <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Digital Marketing Services</span>
+             Professional Website & <br />
+             <span className="text-gradient-cyan">Digital Engineering Services</span>
            </motion.h1>
 
            <motion.p 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.2 }}
-             className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto"
+             className="text-lg md:text-xl text-[#8A9BB5] max-w-2xl mx-auto font-medium"
            >
-             We provide complete digital solutions for businesses that want strong online presence, better search rankings, and higher customer conversions.
+             End-to-end digital solutions for brands that demand performance, aesthetic excellence, and market-leading results.
            </motion.p>
         </div>
       </section>
 
-      {/* Services List */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-6">
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {/* Services List Grid */}
+      <section className="py-20 md:pb-32 relative">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
              {mainServices.map((service, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-[2rem] p-8 md:p-10 border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 group"
+                  className="glass-card rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 group border border-white/5 hover:border-[rgba(0,229,255,0.15)] hover:-translate-y-2"
                 >
-                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center mb-8 border border-white shadow-sm group-hover:scale-110 transition-transform">
-                      <service.icon className="w-8 h-8 text-[#2563EB]" />
+                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.accent} flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className="w-8 h-8 text-[#080C14]" strokeWidth={2.5} />
                    </div>
 
-                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 group-hover:text-[#2563EB] transition-colors">
+                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-[#00E5FF] transition-colors leading-tight">
                      {service.title}
                    </h2>
                    
-                   <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                   <p className="text-[#8A9BB5] text-[0.95rem] mb-10 leading-relaxed font-medium">
                      {service.description}
                    </p>
 
-                   <ul className="space-y-4 mb-8">
+                   <ul className="space-y-4 mb-10">
                       {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-slate-700">
-                          <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span className="font-medium">{feature}</span>
+                        <li key={idx} className="flex items-start gap-4 text-[#F0F4FF] group/item">
+                          <CheckCircle2 className="w-5 h-5 text-[#00E5FF] flex-shrink-0 mt-0.5 opacity-60 group-hover/item:opacity-100 transition-all" />
+                          <span className="font-semibold text-sm tracking-wide">{feature}</span>
                         </li>
                       ))}
                    </ul>
 
                    {service.footer && (
-                     <div className="pt-6 border-t border-slate-100">
-                        <p className="text-sm font-semibold text-slate-500 italic">
+                     <div className="pt-6 border-t border-white/5">
+                        <p className="text-xs font-bold text-[#8A9BB5] uppercase font-mono tracking-widest leading-relaxed">
                           &quot;{service.footer}&quot;
                         </p>
                      </div>
@@ -150,27 +184,40 @@ export function ServiceContent() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-           <div className="bg-[#18181B] rounded-[2.5rem] p-10 md:p-20 text-center relative overflow-hidden">
-              {/* Background Glows */}
-              <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px]" />
-              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[128px]" />
+      {/* Final CTA Banner */}
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+           <motion.div 
+             initial={{ opacity: 0, y: 40 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="relative bg-gradient-to-r from-[#0F1724] to-[#080C14] border border-white/5 p-12 md:p-24 rounded-[3.5rem] text-center overflow-hidden"
+           >
+              <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#00E5FF]/10 rounded-full blur-[160px] pointer-events-none" />
 
-              <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                  Start your project with a <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#06B6D4]">free consultation.</span>
+              <div className="relative z-10 space-y-10">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl mx-auto">
+                  Start your digital acceleration with a <br/>
+                  <span className="text-gradient-cyan">Free Project Discovery.</span>
                 </h2>
                 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <Link href="/#contact" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-100 transition-colors flex items-center gap-2">
-                    Get Free Consultation <ArrowRight className="w-5 h-5" />
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                  <Link 
+                    href="/#contact" 
+                    className="px-12 py-5 bg-gradient-to-r from-[#00E5FF] to-[#00B8D4] text-[#080C14] font-extrabold rounded-full text-lg shadow-2xl shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3"
+                  >
+                    Get Your Quote <ArrowUpRight className="w-6 h-6" />
                   </Link>
+                  <a 
+                    href="https://wa.me/917996998142" 
+                    className="flex items-center gap-3 text-lg font-bold text-[#F0F4FF] hover:text-[#00E5FF] transition-all"
+                  >
+                     Chat on WhatsApp <ArrowUpRight className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
-           </div>
+           </motion.div>
         </div>
       </section>
     </main>

@@ -1,229 +1,235 @@
-import type { Metadata } from "next";
-import { Phone, CheckCircle2, ArrowRight } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About Us | DigitechAvenue",
-  description: "DigitechAvenue is a professional website design and digital solutions agency dedicated to helping businesses establish a strong, credible, and results-driven online presence.",
-};
+import { motion } from "framer-motion";
+import { Phone, CheckCircle2, ArrowRight, ShieldCheck, Globe, Zap, Users, Target, Rocket } from "lucide-react";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <main className="bg-slate-50 min-h-screen">
+    <main className="bg-[#080C14] min-h-screen text-[#F0F4FF] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative bg-slate-900 py-24 md:py-32 overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#2563EB]/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#06B6D4]/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
-        </div>
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="absolute top-1/4 right-[10%] w-[600px] h-[600px] bg-[#00E5FF]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-[5%] w-[500px] h-[500px] bg-[#FFD700]/3 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 text-center max-w-5xl">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.25em] mb-6"
+          >
+            Our Mission & Story
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight"
+          >
             We Build Digital Assets That <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Drive Business Growth</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            DigitechAvenue is a professional website design and digital solutions agency dedicated to helping businesses establish a strong, credible, and results-driven online presence.
-          </p>
+            <span className="text-gradient-cyan">Engineering Business Growth</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-[#8A9BB5] max-w-3xl mx-auto leading-relaxed font-medium"
+          >
+            DigiTech Avenue is a premium digital agency dedicated to helping performance-driven brands establish a strong, credible, and results-driven online presence.
+          </motion.p>
         </div>
       </section>
 
-      {/* Intro & Who We Are Section */}
-      <section className="relative z-20 -mt-16 md:-mt-20 pb-16 md:pb-24">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Intro Cards Section */}
+      <section className="relative z-20 -mt-8 pb-24 md:pb-32">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Card 1: Who We Are */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border-t-4 border-[#2563EB] group hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#2563EB] transition-colors">Who We Are</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                We partner with startups, entrepreneurs, and growing businesses that seek more than just a visually appealing website.
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="glass-card rounded-2xl p-8 lg:p-10 border-t-2 border-[#00E5FF]/40 group hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-12 h-12 rounded-xl bg-[#00E5FF]/10 flex items-center justify-center mb-6 text-[#00E5FF]">
+                <Users className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#00E5FF] transition-colors">Who We Are</h3>
+              <p className="text-[#8A9BB5] leading-relaxed mb-4">
+                We partner with high-growth startups and established enterprises that seek more than just a &quot;website&quot;. 
               </p>
-              <p className="text-slate-600 leading-relaxed">
-                Our work combines strategic thinking, modern design, and performance-driven development to create digital platforms that attract attention, build trust, and generate enquiries.
+              <p className="text-[#8A9BB5] leading-relaxed">
+                Our approach combines strategic intelligence with luxury design to create platforms that command attention and drive revenue.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 2: Our Commitment */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border-t-4 border-[#06B6D4] group hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#06B6D4] transition-colors">Our Commitment</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                We believe a successful website should do more than exist — it should <strong>perform</strong>.
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.1 }}
+               className="glass-card rounded-2xl p-8 lg:p-10 border-t-2 border-[#FFD700]/40 group hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-12 h-12 rounded-xl bg-[#FFD700]/10 flex items-center justify-center mb-6 text-[#FFD700]">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#FFD700] transition-colors">Our Commitment</h3>
+              <p className="text-[#8A9BB5] leading-relaxed mb-4">
+                We believe a successful digital product should do more than exist — it must <strong>perform</strong> at peak efficiency.
               </p>
-              <p className="text-slate-600 leading-relaxed">
-                Our commitment is to build digital assets that strengthen your brand image, improve customer trust, and contribute directly to your business success.
+              <p className="text-[#8A9BB5] leading-relaxed">
+                Our commitment is to eliminate friction and build digital assets that strengthen your ROI and market positioning.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 3: What We Do */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border-t-4 border-[#2563EB] group hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#2563EB] transition-colors">What We Do</h3>
-              <p className="text-slate-600 mb-4 text-sm">DigitechAvenue provides end-to-end digital solutions tailored to your brand:</p>
-              <ul className="space-y-2 text-slate-600 text-sm">
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.2 }}
+               className="glass-card rounded-2xl p-8 lg:p-10 border-t-2 border-[#00E5FF]/40 group hover:-translate-y-2 transition-all duration-500"
+            >
+              <div className="w-12 h-12 rounded-xl bg-[#00E5FF]/10 flex items-center justify-center mb-6 text-[#00E5FF]">
+                <Rocket className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#00E5FF] transition-colors">What We Do</h3>
+              <ul className="space-y-3">
                 {[
-                  "Custom Website Design & Development",
-                  "Business, Portfolio & eCommerce Websites",
-                  "Website Redesign & Optimization",
-                  "SEO-Friendly Website Structure",
-                  "Landing Pages & Lead Funnels",
-                  "UI/UX Design & Branding"
+                  "Premium Web Engineering",
+                  "High-Performance E-Commerce",
+                  "Conversion-Led Strategy",
+                  "Luxury UI/UX Architecture",
+                  "SEO Domination Systems",
+                  "Custom SaaS Development"
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#06B6D4] mt-1.5 shrink-0" />
+                  <li key={idx} className="flex items-center gap-3 text-[#8A9BB5] text-sm font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-[#00E5FF]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Our Process Section */}
-      <section className="py-16 md:py-24 bg-white relative">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16 md:mb-20">
-            <span className="text-[#2563EB] font-bold tracking-wider uppercase text-sm mb-2 block">Our Approach</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              A Structured & Transparent Process
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We follow a proven workflow to ensure clarity, consistency, and measurable outcomes at every stage of the project.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            {[
-              {
-                id: "01",
-                title: "Understand",
-                desc: "We dive deep into your business goals, audience, and requirements."
-              },
-              {
-                id: "02",
-                title: "Plan",
-                desc: "We create a strategic roadmap and wireframes tailored to your needs."
-              },
-              {
-                id: "03",
-                title: "Design",
-                desc: "Our team crafts modern, visually appealing, and user-friendly designs."
-              },
-              {
-                id: "04",
-                title: "Develop",
-                desc: "We build your platform using the latest technologies for speed and scalability."
-              },
-              {
-                id: "05",
-                title: "Optimize",
-                desc: "We ensure SEO-readiness, performance, and mobile responsiveness."
-              },
-              {
-                id: "06",
-                title: "Launch",
-                desc: "We deploy your project and provide support to ensure a smooth takeoff."
-              }
-            ].map((step, idx) => (
-              <div key={step.id} className="relative pl-4 group">
-                <div className="absolute top-0 left-0 text-6xl font-bold text-slate-100 -z-10 group-hover:text-slate-200 transition-colors select-none">
-                  {step.id}
-                </div>
-                <div className="pt-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#2563EB] transition-colors">{step.id}. {step.title}</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    {step.desc}
-                  </p>
-                  <div className="w-12 h-1 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] mt-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Founder's Message & Compelling Reasons */}
-      <section className="py-16 md:py-24 bg-slate-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left Content: Why Choose Us */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Why Businesses Choose <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">DigitechAvenue</span>
-              </h2>
-              <p className="text-slate-600 leading-relaxed mb-8">
-                Businesses work with us because we prioritise outcomes, not just deliverables. We treat each website as a growth investment, not a routine project.
-              </p>
-              
-              <div className="space-y-4">
-                {[
-                  { title: "Tailored, Custom-Built Solutions", content: "We don't rely on generic templates. We build solutions that fit your specific business needs." },
-                  { title: "Modern, Premium Design Standards", content: "Your website is your digital face. We ensure it looks professional, credible, and premium." },
-                  { title: "Conversion-Focused Strategy", content: "We design with the end-goal in mind: turning visitors into paying customers." },
-                  { title: "SEO-Ready Development", content: "Our development practices ensure your site is ready to rank and perform well on search engines." },
-                  { title: "Clear Communication & Reliability", content: "We believe in transparency. You'll always know where your project stands." },
-                  { title: "On-Time Delivery", content: "We value your time. We stick to deadlines and deliver high-quality work on schedule." },
-                  { title: "Ongoing Support & Partnership", content: "We are in it for the long haul, providing support even after the project is live." },
-                ].map((item, idx) => (
-                  <details key={idx} className="group bg-white rounded-xl border border-slate-200 open:border-[#2563EB] transition-colors">
-                    <summary className="flex items-center justify-between p-4 cursor-pointer list-none font-semibold text-slate-800 marker:hidden">
-                      <span>{item.title}</span>
-                      <span className="text-[#2563EB] group-open:rotate-45 transition-transform duration-300 font-bold text-2xl leading-none">+</span>
-                    </summary>
-                    <div className="px-4 pb-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-2">
-                      {item.content}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+      {/* Philosophy Section */}
+      <section className="py-24 md:py-32 bg-[#0A0F1A] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00E5FF]/20 to-transparent" />
+        
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            {/* Right Side - Founder's Message */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-slate-200 p-8 md:p-10">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 rounded-bl-[100px] -z-0" />
-               <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Founder’s Message</h3>
-                  <blockquote className="text-slate-600 italic leading-relaxed mb-6">
-                    &quot;DigitechAvenue was created with a simple belief — businesses deserve websites that genuinely help them grow, not just look good. Every project we take on is approached with responsibility, precision, and a focus on results. Our goal is to deliver work that our clients are proud to present and confident to scale with.&quot;
-                  </blockquote>
-                  <div className="flex items-center gap-4 mt-8">
-                     <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold text-xl">D</div>
-                     <div>
-                        <p className="font-bold text-slate-900">Founder</p>
-                        <p className="text-sm text-slate-500">DigitechAvenue</p>
+            {/* Left: Why Choose Us */}
+            <motion.div
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+            >
+               <span className="inline-block text-sm font-bold text-[#FFD700] uppercase tracking-[0.25em] mb-4">
+                  The Edge
+               </span>
+               <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
+                  Why Leading Brands Choose <span className="text-gradient-cyan">DigiTech Avenue</span>
+               </h2>
+               <p className="text-[#8A9BB5] text-lg leading-relaxed mb-10 max-w-xl">
+                  We don&apos;t just deliver code. We deliver outcomes. Our agency functions like a high-performance formula 1 team for your digital acceleration.
+               </p>
+
+               <div className="space-y-4">
+                 {[
+                   { title: "No Templates. Just Engineering.", icon: Target },
+                   { title: "Psychology-Driven UX Patterns", icon: Globe },
+                   { title: "Speed as a Feature (Sub-2s Load)", icon: Zap },
+                   { title: "24/7 Priority Support Ecosystem", icon: ShieldCheck },
+                 ].map((item, idx) => (
+                   <motion.div 
+                      key={idx}
+                      whileHover={{ x: 10 }}
+                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1724] border border-white/5 hover:border-[#00E5FF]/30 transition-all cursor-default"
+                   >
+                      <item.icon className="w-5 h-5 text-[#00E5FF]" />
+                      <span className="font-bold text-white text-[0.95rem]">{item.title}</span>
+                   </motion.div>
+                 ))}
+               </div>
+            </motion.div>
+
+            {/* Right: Founder Image/Message Box */}
+            <motion.div
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: true }}
+               className="relative"
+            >
+               <div className="absolute -inset-4 bg-gradient-to-tr from-[#00E5FF]/20 to-transparent rounded-[2.5rem] blur-2xl opacity-50" />
+               <div className="relative bg-[#0F1724] border border-white/10 p-10 md:p-14 rounded-[2.5rem] overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E5FF]/5 rounded-bl-[100px]" />
+                  
+                  <div className="relative z-10">
+                     <svg className="w-12 h-12 text-[#00E5FF] opacity-30 mb-8" fill="currentColor" viewBox="0 0 32 32">
+                        <path d="M10 8v8H6v-8h4zm12 0v8h-4v-8h4zM12 20h-8v-12h8v12zm12 0h-8v-12h8v12z"/>
+                     </svg>
+                     <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-widest font-mono">Visionary Message</h3>
+                     <blockquote className="text-[#8A9BB5] text-xl italic leading-relaxed mb-10">
+                        &quot;DigiTech Avenue was founded on the principle that digital excellence is not optional. We treat every pixel and every line of code as a critical part of your revenue engine. Our goal is to make you the leader in your industry, visually and technically.&quot;
+                     </blockquote>
+                     
+                     <div className="flex items-center gap-5">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00E5FF] to-[#0F1724] flex items-center justify-center font-bold text-2xl text-white shadow-xl">
+                           D
+                        </div>
+                        <div>
+                           <p className="font-extrabold text-[#F0F4FF] text-lg uppercase tracking-tight">The Executive Board</p>
+                           <p className="text-sm font-bold text-[#00E5FF] font-mono tracking-widest">DIGITECH AVENUE ®</p>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA Strip */}
-      <section className="py-12 bg-white border-t border-slate-100">
-         <div className="container mx-auto px-4 md:px-6">
-            <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-8 md:p-12 relative overflow-hidden shadow-2xl">
-               <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#2563EB]/20 rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3" />
-               <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#06B6D4]/20 rounded-full blur-[80px] -translate-x-1/3 translate-y-1/3" />
-               
-               <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-                  <div className="max-w-xl">
-                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Let’s Build Something That Works</h2>
-                     <p className="text-slate-300 text-lg mb-2">Whether you are launching a new venture, upgrading your online presence, or optimising for growth.</p>
-                     <p className="text-slate-400">DigitechAvenue is ready to help you move forward with confidence.</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-4 shrink-0">
-                     <p className="text-slate-300 font-semibold">Just A Call Away!!</p>
-                     <a 
-                        href="tel:+917996998142" 
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                     >
-                        <Phone className="w-5 h-5" />
-                        <span>+91 799 699 8142</span>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
+      {/* CTA Final */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+           <motion.div 
+             initial={{ opacity: 0, y: 40 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="relative bg-gradient-to-br from-[#0F1724] to-[#080C14] border border-white/5 p-12 md:p-20 rounded-[3rem] overflow-hidden text-center"
+           >
+              <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+              <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 relative z-10">
+                Ready to Engineering <br />
+                <span className="text-gradient-gold">Your Success?</span>
+              </h2>
+              <p className="text-[#8A9BB5] text-xl mb-12 max-w-2xl mx-auto relative z-10 font-medium">
+                Whether you&apos;re launching a new venture or upgrading your online presence, we are your strategic partner for growth.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
+                 <Link 
+                   href="/contact" 
+                   className="px-10 py-5 bg-gradient-to-r from-[#00E5FF] to-[#00B8D4] text-[#080C14] font-extrabold rounded-full text-lg shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all"
+                 >
+                    Get a Quote Today
+                 </Link>
+                 <a 
+                   href="tel:+917996998142" 
+                   className="flex items-center gap-3 text-[#F0F4FF] hover:text-[#00E5FF] font-bold transition-colors"
+                 >
+                    <Phone className="w-5 h-5" />
+                    <span>+91 799 699 8142</span>
+                 </a>
+              </div>
+           </motion.div>
+        </div>
       </section>
     </main>
   );

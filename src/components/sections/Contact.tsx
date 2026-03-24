@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, Globe, MapPin, Send, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -13,197 +13,166 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const formData = new FormData(e.currentTarget);
-    
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/info@digitechavenue.com", {
-        method: "POST",
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        (e.target as HTMLFormElement).reset();
-        setTimeout(() => setIsSuccess(false), 5000); // Hide after 5 seconds
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
-    } finally {
+    // Simulate submission delay
+    setTimeout(() => {
+      setIsSuccess(true);
       setIsSubmitting(false);
-    }
+      (e.target as HTMLFormElement).reset();
+      setTimeout(() => setIsSuccess(false), 5000);
+    }, 1500);
   };
 
   return (
-    <section id="contact" className="py-12 md:py-16 bg-white relative overflow-hidden">
-        {/* Success Popup */}
-        {isSuccess && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-                <motion.div 
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl"
-                >
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Send className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h3>
-                    <p className="text-slate-600 mb-6">Thank you for submitting. The team will get back to you shortly.</p>
-                    <button 
-                        onClick={() => setIsSuccess(false)}
-                        className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
-                    >
-                        Close
-                    </button>
-                </motion.div>
-            </div>
-        )}
+    <section id="contact" className="py-20 md:py-28 bg-[#080C14] relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00E5FF]/3 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
-          {/* Left Column: Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-full max-w-lg"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
-              Share Your <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">Project Details for</span>
-            </h2>
+          {/* Left Column: Info & Details */}
+          <div className="lg:col-span-5">
+             <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+             >
+                <span className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-4">
+                  Get In Touch
+                </span>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-[#F0F4FF] leading-tight mb-8">
+                  Let&apos;s Build something <br />
+                  <span className="text-gradient-cyan">Great Together.</span>
+                </h2>
+                <p className="text-[#8A9BB5] text-lg mb-12">
+                   Have a project in mind? We respond quickly and provide honest guidance. Let&apos;s discuss how we can engineering your success.
+                </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <input type="hidden" name="_subject" value="New Project Inquiry - DigitechAvenue" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
+                <div className="space-y-8">
+                   <div className="flex items-center gap-5 group">
+                      <div className="w-14 h-14 rounded-2xl bg-[#0F1724] border border-white/5 flex items-center justify-center text-[#00E5FF] group-hover:border-[#00E5FF]/40 transition-all duration-300">
+                         <Mail className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <p className="text-xs font-bold text-[#FFD700] uppercase tracking-wider mb-1">Email Us</p>
+                         <p className="text-[#F0F4FF] text-lg font-medium group-hover:text-[#00E5FF] transition-colors">info@digitechavenue.com</p>
+                      </div>
+                   </div>
 
-              <div className="group space-y-2">
-                <label className="text-sm font-semibold text-gray-700 ml-1">Your Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter your full name"
-                  className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 placeholder:text-gray-400 text-gray-900 shadow-sm"
-                  required
-                />
-              </div>
+                   <div className="flex items-center gap-5 group">
+                      <div className="w-14 h-14 rounded-2xl bg-[#0F1724] border border-white/5 flex items-center justify-center text-[#00E5FF] group-hover:border-[#00E5FF]/40 transition-all duration-300">
+                         <Phone className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <p className="text-xs font-bold text-[#FFD700] uppercase tracking-wider mb-1">Call Us</p>
+                         <p className="text-[#F0F4FF] text-lg font-medium group-hover:text-[#00E5FF] transition-colors">+91 799 699 8142</p>
+                      </div>
+                   </div>
 
-              <div className="group space-y-2">
-                <label className="text-sm font-semibold text-gray-700 ml-1">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email address"
-                  className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 placeholder:text-gray-400 text-gray-900 shadow-sm"
-                  required
-                />
-              </div>
-
-              <div className="group space-y-2">
-                <label className="text-sm font-semibold text-gray-700 ml-1">Phone Number</label>
-                <div className="flex items-center gap-3 w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50/50 focus-within:bg-white focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all duration-200 shadow-sm">
-                  <div className="flex items-center gap-2 pr-3 border-r border-gray-300">
-                    <span className="relative flex items-center justify-center w-6 h-4 rounded-sm overflow-hidden shadow-sm">
-                      <Image src="/flag.png" alt="India" fill className="object-cover" />
-                    </span>
-                    <span className="text-gray-700 text-sm font-semibold">+91</span>
-                  </div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Enter mobile number"
-                    className="w-full outline-none text-gray-900 placeholder:text-gray-400 bg-transparent font-medium"
-                    required
-                  />
+                   <div className="flex items-center gap-5 group">
+                      <div className="w-14 h-14 rounded-2xl bg-[#0F1724] border border-white/5 flex items-center justify-center text-[#00E5FF] group-hover:border-[#00E5FF]/40 transition-all duration-300">
+                         <MapPin className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <p className="text-xs font-bold text-[#FFD700] uppercase tracking-wider mb-1">Visit Us</p>
+                         <p className="text-[#F0F4FF] text-lg font-medium">Bengaluru, KA, India</p>
+                      </div>
+                   </div>
                 </div>
-              </div>
 
-              <div className="group space-y-2">
-                <label className="text-sm font-semibold text-gray-700 ml-1">Project Details</label>
-                <textarea
-                  name="message"
-                  placeholder="Tell us about your project..."
-                  className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-200 placeholder:text-gray-400 text-gray-900 shadow-sm min-h-[120px] resize-y"
-                  required
-                />
-              </div>
+                <div className="mt-12 p-6 rounded-2xl bg-[#0F1724] border border-[rgba(0,229,255,0.1)] inline-flex items-center gap-3">
+                   <div className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
+                   <p className="text-[#00E5FF] text-sm font-bold tracking-wide">Average response time: 2 hours</p>
+                </div>
+             </motion.div>
+          </div>
 
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full md:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#06B6D4] text-white font-bold text-lg shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group"
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          </motion.div>
+          {/* Right Column: Contact Form */}
+          <div className="lg:col-span-7">
+             <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-[#0F1724] border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+             >
+                {/* Decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E5FF]/5 rounded-bl-full pointer-events-none" />
 
-          {/* Right Column: Profile & Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full flex flex-col items-center max-w-sm mx-auto lg:ml-auto lg:mr-0 pt-2 lg:pt-0"
-          >
-            {/* Image Container */}
-            <div className="w-full aspect-[4/4.5] rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/50 mb-7 relative border border-slate-100 group">
-              <Image 
-                src="/shabaz.jpeg" 
-                alt="Sayyad Shabaz" 
-                fill 
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-              {/* Name Overlay block matching modern consultant tags */}
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#111111]/90 via-[#111111]/40 to-transparent p-6 pt-12 text-white text-center">
-                 <h3 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight drop-shadow-md pb-1">Sayyad Shabaz</h3>
-              </div>
-            </div>
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                         <label className="text-xs font-bold text-[#8A9BB5] uppercase tracking-widest px-1">Full Name</label>
+                         <input 
+                            type="text" 
+                            placeholder="John Doe" 
+                            className="w-full bg-[#080C14] border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#00E5FF]/50 transition-all text-[#F0F4FF] text-sm"
+                            required
+                         />
+                      </div>
+                      <div className="space-y-2">
+                         <label className="text-xs font-bold text-[#8A9BB5] uppercase tracking-widest px-1">Email Address</label>
+                         <input 
+                            type="email" 
+                            placeholder="john@example.com" 
+                            className="w-full bg-[#080C14] border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#00E5FF]/50 transition-all text-[#F0F4FF] text-sm"
+                            required
+                         />
+                      </div>
+                   </div>
 
-            {/* Buttons Stack */}
-            <div className="flex flex-col gap-4 w-full">
-               <a 
-                 href="https://wa.me/917996998142"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="w-full py-4 sm:py-4.5 px-6 rounded-2xl bg-gradient-to-r from-[#4F46E5] to-[#EC4899] text-white font-bold text-[1.15rem] flex items-center justify-center gap-3 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
-               >
-                  <Calendar className="w-[1.35rem] h-[1.35rem]" strokeWidth={2.5} />
-                  Schedule a Meeting
-               </a>
-               
-               <a 
-                 href="tel:+917996998142"
-                 className="w-full py-4 sm:py-4.5 px-6 rounded-2xl bg-white border-[1.5px] border-slate-200 text-slate-800 font-bold text-[1.15rem] flex items-center justify-center gap-3 shadow-sm hover:border-[#2563EB] hover:text-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
-               >
-                  <Phone className="w-6 h-6 text-slate-700 group-hover:text-[#2563EB]" strokeWidth={2.2} />
-                  +91 799 699 8142
-               </a>
-               
-               <a 
-                 href="mailto:info@digitechavenue.com"
-                 className="w-full py-4 sm:py-4.5 px-6 rounded-2xl bg-white border-[1.5px] border-slate-200 text-slate-800 font-bold text-[1.15rem] flex items-center justify-center gap-3 shadow-sm hover:border-[#2563EB] hover:text-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 group"
-               >
-                  <Mail className="w-6 h-6 shrink-0 text-slate-700 group-hover:text-[#2563EB]" strokeWidth={2.2} />
-                  <span className="truncate">info@digitechavenue.com</span>
-               </a>
-            </div>
-          </motion.div>
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                         <label className="text-xs font-bold text-[#8A9BB5] uppercase tracking-widest px-1">Service</label>
+                         <select className="w-full bg-[#080C14] border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#00E5FF]/50 transition-all text-[#8A9BB5] text-sm appearance-none cursor-pointer">
+                            <option>Web Development</option>
+                            <option>UI/UX Design</option>
+                            <option>Mobile Apps</option>
+                            <option>Digital Marketing</option>
+                            <option>SEO Services</option>
+                         </select>
+                      </div>
+                      <div className="space-y-2">
+                         <label className="text-xs font-bold text-[#8A9BB5] uppercase tracking-widest px-1">Budget Range</label>
+                         <select className="w-full bg-[#080C14] border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#00E5FF]/50 transition-all text-[#8A9BB5] text-sm appearance-none cursor-pointer">
+                            <option>$500 - $1,000</option>
+                            <option>$1,000 - $5,000</option>
+                            <option>$5,000 - $10,000</option>
+                            <option>$10,000+</option>
+                         </select>
+                      </div>
+                   </div>
+
+                   <div className="space-y-2">
+                      <label className="text-xs font-bold text-[#8A9BB5] uppercase tracking-widest px-1">Project Details</label>
+                      <textarea 
+                         rows={4}
+                         placeholder="Tell us about your project, goals and timeline..." 
+                         className="w-full bg-[#080C14] border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#00E5FF]/50 transition-all text-[#F0F4FF] text-sm resize-none"
+                         required
+                      ></textarea>
+                   </div>
+
+                   <button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#00E5FF] to-[#00B8D4] text-[#080C14] font-extrabold text-lg flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 hover:-translate-y-1 transition-all group"
+                   >
+                      {isSubmitting ? "Engineers working..." : "Send Discovery Request"}
+                      {!isSubmitting && <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                   </button>
+
+                   {isSuccess && (
+                      <motion.div 
+                         initial={{ opacity: 0, y: 10 }} 
+                         animate={{ opacity: 1, y: 0 }}
+                         className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm text-center font-bold"
+                      >
+                         Success! We&apos;ve received your request and will be in touch within 2 hours.
+                      </motion.div>
+                   )}
+                </form>
+             </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,29 +1,52 @@
 "use client";
 
 import { Hero } from "@/components/sections/Hero";
+import { ServicesTicker } from "@/components/sections/ServicesTicker";
+import { ValueProp } from "@/components/sections/ValueProp";
 import { Services } from "@/components/sections/Services";
-import { Consultation } from "@/components/sections/Consultation";
-import { Expertise } from "@/components/sections/Expertise";
-import { Process } from "@/components/sections/Process";
+import { Stats } from "@/components/sections/Stats";
 import { RecentWork } from "@/components/sections/RecentWork";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Brands } from "@/components/sections/Brands";
+import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { CTABanner } from "@/components/sections/CTABanner";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-slate-900 overflow-x-hidden selection:bg-purple-200 selection:text-purple-900">
+    <main className="min-h-screen bg-[#080C14] text-[#F0F4FF] overflow-x-hidden">
+      {/* 1. Hero Section */}
       <Hero />
-      <Services /> 
-      <Consultation />
-      <Expertise />
-      {/* <Process /> - Kept Process as it likely adds value even if not explicitly in brief, or can be removed if user dislikes. Keeping for now as it bridges 'How we do it'. */}
+
+      {/* 2. Services Ticker / Marquee */}
+      <ServicesTicker />
+
+      {/* 3. About / Value Proposition */}
+      <ValueProp />
+
+      {/* 4. Services Grid */}
+      <Services />
+
+      {/* 5. Results / Stats */}
+      <Stats />
+
+      {/* 6. Portfolio Showcase */}
       <RecentWork />
-      <Brands />
+
+      {/* 7. Process Timeline */}
+      <Process />
+
+      {/* 8. Testimonials Carousel */}
       <Testimonials />
+
+      {/* 9. FAQ Accordion */}
+      <FAQ />
+
+      {/* 10. Contact Section */}
       <Contact />
-      <WhyUs />
+
+      {/* 11. Final CTA Banner */}
+      <CTABanner />
     </main>
   );
 }

@@ -1,113 +1,108 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, Palette, Code2, Rocket } from "lucide-react";
 
 const steps = [
   {
-    icon: Lightbulb,
-    title: "Plan",
-    description: "We understand your goals and map out the perfect strategy.",
-    color: "from-amber-400 to-orange-500",
-    shadowColor: "shadow-amber-300/30",
+    number: "01",
+    title: "Discovery",
+    description: "Deep dive into your business, goals, and audience to set a solid foundation.",
   },
   {
-    icon: Palette,
+    number: "02",
+    title: "Strategy",
+    description: "Developing a roadmap focused on ROI and market-leading performance.",
+  },
+  {
+    number: "03",
     title: "Design",
-    description: "Crafting beautiful, conversion-focused visual experiences.",
-    color: "from-[#2563EB] to-blue-600",
-    shadowColor: "shadow-blue-300/30",
+    description: "Crafting a luxury aesthetic that builds trust and commands attention.",
   },
   {
-    icon: Code2,
+    number: "04",
     title: "Build",
-    description: "Clean, performant code with modern frameworks and best practices.",
-    color: "from-[#06B6D4] to-cyan-600",
-    shadowColor: "shadow-cyan-300/30",
+    description: "Clean, efficient coding using modern stacks for ultimate speed and scalability.",
   },
   {
-    icon: Rocket,
+    number: "05",
     title: "Launch",
-    description: "SEO-optimized deployment with ongoing support and analytics.",
-    color: "from-[#10B981] to-emerald-600",
-    shadowColor: "shadow-emerald-300/30",
+    description: "Seamless deployment with rigorous QA and performance optimization.",
+  },
+  {
+    number: "06",
+    title: "Grow",
+    description: "Ongoing support and data-driven scaling to dominate your market.",
   },
 ];
 
 export function Process() {
   return (
-    <section id="process" className="py-12 md:py-20 bg-white relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+    <section id="process" className="py-20 md:py-28 bg-[#080C14] relative overflow-hidden">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 text-sm font-semibold text-[#2563EB] mb-4"
+            className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-4"
           >
-            Our Process
-          </motion.div>
+            The Workflow
+          </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F0F4FF] leading-[1.1] mb-6"
           >
-            How We Bring Your{" "}
-            <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">
-              Vision to Life
-            </span>
+            Our Precision{" "}
+            <span className="text-gradient-cyan">Process</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-slate-600 max-w-2xl mx-auto text-lg"
+            className="text-[#8A9BB5] text-lg"
           >
-            A streamlined process designed for efficiency and quality results.
+            A high-performance journey from concept to market domination.
           </motion.p>
         </div>
 
-        {/* Process Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ y: -8 }}
-              className="relative group"
-            >
-              {/* Connector line (hidden on mobile, visible on lg) */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-10 left-[60%] w-[calc(100%-20%)] h-[2px] bg-gradient-to-r from-slate-200 to-slate-100 z-0" />
-              )}
+        {/* Timeline Desktop */}
+        <div className="relative">
+          {/* Connector Line (Desktop) */}
+          <div className="hidden lg:block absolute top-[40px] left-0 w-full h-px bg-gradient-to-r from-transparent via-[rgba(0,229,255,0.2)] to-transparent" />
 
-              <div className="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 z-10">
-                {/* Step number */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
-                  {String(index + 1).padStart(2, "0")}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8 relative z-10">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="group flex flex-col items-center lg:items-start text-center lg:text-left"
+              >
+                {/* Number sphere */}
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#0F1724] border border-[rgba(0,229,255,0.1)] flex items-center justify-center mb-6 group-hover:border-[#00E5FF]/40 transition-all duration-500 relative">
+                  <span className="text-xl md:text-2xl font-bold font-mono text-[#00E5FF] group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.8)] transition-all">
+                    {step.number}
+                  </span>
+                  {/* Decorative pulse ring on active/hover */}
+                  <div className="absolute inset-[-4px] rounded-full border border-[rgba(0,229,255,0.1)] group-hover:border-[rgba(0,229,255,0.3)] animate-pulse transition-all" />
                 </div>
 
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-5 shadow-lg ${step.shadowColor} group-hover:scale-110 transition-transform duration-300`}>
-                  <step.icon className="w-7 h-7 text-white" />
-                </div>
-
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
-              </div>
-            </motion.div>
-          ))}
+                <h3 className="text-xl font-bold text-[#F0F4FF] mb-3 group-hover:text-[#00E5FF] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-[#8A9BB5] text-sm leading-relaxed max-w-[200px] lg:max-w-none">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

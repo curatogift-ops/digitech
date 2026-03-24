@@ -1,107 +1,122 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 const projects = [
   {
-    title: "THE TRAVEL BOOK",
-    image: "/projects/curato-gift.png",
-    bgColor: "bg-[#2563EB]", // Blue to match theme instead of red
+    title: "The Travel Book",
+    client: "Travel Agency",
+    category: "Web Design",
+    result: "340% increase in bookings",
+    color: "from-[#00E5FF]/20 to-[#0F1724]",
+    borderColor: "border-[#00E5FF]/20",
   },
   {
-    title: "GETWINGS AVIATIONS",
-    image: "/projects/rr-trust.png",
-    bgColor: "bg-[#111111]", // Black 
+    title: "GetWings Aviations",
+    client: "Aviation Company",
+    category: "E-Commerce",
+    result: "200% revenue growth",
+    color: "from-[#FFD700]/20 to-[#0F1724]",
+    borderColor: "border-[#FFD700]/20",
   },
   {
-    title: "STYLUS ARCADE",
-    image: "/projects/sider-lehenga.png",
-    bgColor: "bg-[#2563EB]", 
-  },
-  {
-    title: "A SAFE EMBRACE",
-    image: "/projects/sider-lehenga.png",
-    bgColor: "bg-[#111111]", 
-  },
-  {
-    title: "BEATWISSE",
-    image: "/projects/curato-gift.png",
-    bgColor: "bg-[#2563EB]", 
-  },
-  {
-    title: "NEXT PRO",
-    image: "/projects/rr-trust.png",
-    bgColor: "bg-[#111111]", 
+    title: "Stylus Arcade",
+    client: "Gaming Platform",
+    category: "App Development",
+    result: "50K+ active users",
+    color: "from-[#7C3AED]/20 to-[#0F1724]",
+    borderColor: "border-[#7C3AED]/20",
   },
 ];
 
 export function RecentWork() {
   return (
-    <section id="portfolio" className="py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 relative z-10 w-full max-w-[1400px]">
-        
-        {/* Header Content */}
-        <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2563EB] mb-4 font-heading"
+    <section id="portfolio" className="py-20 md:py-28 bg-[#0A0F1A] relative overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#00E5FF]/3 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div>
+            <motion.span
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-4"
+            >
+              Featured Work
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F0F4FF] leading-[1.1]"
+            >
+              Projects That{" "}
+              <span className="text-gradient-cyan">Deliver Results</span>
+            </motion.h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
           >
-            Our Portfolio !
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.1 }}
-            className="text-lg sm:text-xl text-[#111111] font-bold font-heading leading-relaxed max-w-3xl mx-auto"
-          >
-            We work with our partners to let their brand thrive to the best as we strongly believe that &quot;Together, we build better&quot;
-          </motion.p>
+            <Link
+              href="/portfolio"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-[#8A9BB5] hover:text-[#00E5FF] hover:border-[#00E5FF]/30 font-semibold text-sm transition-all"
+            >
+              View All Work
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-8 md:gap-y-12">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col group cursor-pointer border border-slate-100 shadow-md hover:shadow-2xl transition-shadow duration-500 overflow-hidden"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15, duration: 0.5 }}
+              className={`group relative rounded-2xl overflow-hidden border ${project.borderColor} hover:border-[rgba(0,229,255,0.3)] transition-all duration-500 hover:-translate-y-2 cursor-pointer`}
             >
-
-
-              {/* Title Bar Block */}
-              <div className={`${project.bgColor} py-5 px-4 text-center w-full transition-colors duration-300`}>
-                <h3 className="text-white text-lg sm:text-xl font-bold uppercase font-heading tracking-wide">
-                  {project.title}
-                </h3>
+              {/* Project visual area */}
+              <div className={`relative h-[280px] bg-gradient-to-b ${project.color} flex items-center justify-center`}>
+                <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+                <div className="relative z-10 text-center p-6">
+                  <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#00E5FF] text-xs font-bold uppercase tracking-wider mb-4">
+                    {project.category}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#F0F4FF] mb-2">{project.title}</h3>
+                  <p className="text-[#8A9BB5] text-sm">{project.client}</p>
+                </div>
+                
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-[#080C14]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-14 h-14 rounded-full border-2 border-[#00E5FF] flex items-center justify-center">
+                    <ArrowUpRight className="w-6 h-6 text-[#00E5FF]" />
+                  </div>
+                </div>
               </div>
-              
+
+              {/* Bottom info */}
+              <div className="p-5 bg-[#0F1724]">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-[#8A9BB5] uppercase tracking-wider mb-1">Result</p>
+                    <p className="text-[#00E5FF] font-bold text-sm font-mono">{project.result}</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-[#8A9BB5] group-hover:text-[#00E5FF] transition-colors" />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Explore More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm md:text-base font-bold text-white bg-[#2563EB] rounded-sm transition-all duration-300 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 active:scale-95"
-          >
-            EXPLORE MORE
-          </Link>
-        </motion.div>
-
       </div>
     </section>
   );
