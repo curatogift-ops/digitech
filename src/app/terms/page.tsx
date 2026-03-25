@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FileText, Shield, Globe, CreditCard, Clock, AlertCircle, Phone, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function TermsPage() {
   const sections = [
