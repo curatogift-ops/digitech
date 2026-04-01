@@ -44,17 +44,7 @@ export default function ContactPage() {
                       Ready to start your digital acceleration? We respond within 2 hours with honest, data-backed guidance.
                    </p>
 
-                   {/* Quick Stats/Badges */}
-                   <div className="flex flex-wrap gap-4 mb-16">
-                      <div className="px-5 py-3 rounded-2xl bg-[#0F1724] border border-white/5 flex items-center gap-3">
-                         <div className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
-                         <span className="text-xs font-bold text-[#F0F4FF] uppercase tracking-widest leading-none">Global Reach</span>
-                      </div>
-                      <div className="px-5 py-3 rounded-2xl bg-[#0F1724] border border-white/5 flex items-center gap-3">
-                         <div className="w-2 h-2 rounded-full bg-[#FFD700] animate-pulse" />
-                         <span className="text-xs font-bold text-[#F0F4FF] uppercase tracking-widest leading-none">2hr Response</span>
-                      </div>
-                   </div>
+
 
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-12">
                       <div className="group">
@@ -124,8 +114,8 @@ export default function ContactPage() {
 
                    <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Identity</label>
+                          <div className="space-y-2">
+                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Name</label>
                             <input 
                                type="text" 
                                placeholder="Your Full Name" 
@@ -134,53 +124,39 @@ export default function ContactPage() {
                             />
                          </div>
                          <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Digital Mail</label>
+                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Phone Number</label>
                             <input 
-                               type="email" 
-                               placeholder="name@company.com" 
+                               type="tel" 
+                               placeholder="+91 99999 99999" 
                                required
                                className="w-full bg-[#080C14] border border-white/10 rounded-2xl px-6 py-5 text-[#F0F4FF] focus:outline-none focus:border-[#00E5FF]/40 transition-all font-medium placeholder:text-white/10"
                             />
                          </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Department</label>
-                            <div className="relative">
-                               <select className="w-full bg-[#080C14] border border-white/10 rounded-2xl px-6 py-5 text-[#8A9BB5] focus:outline-none focus:border-[#00E5FF]/40 transition-all font-bold appearance-none cursor-pointer">
-                                  <option>Web Engineering</option>
-                                  <option>App Development</option>
-                                  <option>SEO Domination</option>
-                                  <option>UI/UX Design</option>
-                                  <option>Brand Identity</option>
-                               </select>
-                               <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-40 uppercase text-[10px] font-bold font-mono">Select</div>
-                            </div>
-                         </div>
-                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Budget Allocation</label>
-                            <div className="relative">
-                               <select className="w-full bg-[#080C14] border border-white/10 rounded-2xl px-6 py-5 text-[#8A9BB5] focus:outline-none focus:border-[#00E5FF]/40 transition-all font-bold appearance-none cursor-pointer">
-                                  <option>$500 - $1,500</option>
-                                  <option>$1,500 - $5,000</option>
-                                  <option>$5,000 - $15,000</option>
-                                  <option>$15,000+</option>
-                               </select>
-                               <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-40 uppercase text-[10px] font-bold font-mono">Select</div>
-                            </div>
+                      <div className="space-y-2">
+                         <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Service Type</label>
+                         <div className="relative">
+                            <select required className="w-full bg-[#080C14] border border-white/10 rounded-2xl px-6 py-5 text-[#8A9BB5] focus:outline-none focus:border-[#00E5FF]/40 transition-all font-bold appearance-none cursor-pointer">
+                               <option value="" disabled selected>Select a service...</option>
+                               <option>Brand Identity & Logo Design</option>
+                               <option>Website Design & Development</option>
+                               <option>Mobile App Development</option>
+                               <option>UI / UX Design</option>
+                               <option>Motion & 3D Design</option>
+                               <option>SEO & Digital Marketing</option>
+                               <option>Social Media Management</option>
+                               <option>E-Commerce Solutions</option>
+                               <option>Strategy & Consulting</option>
+                               <option>Other</option>
+                            </select>
+                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-40 text-[10px] font-bold">▾</div>
                          </div>
                       </div>
 
-                      <div className="space-y-2">
-                         <label className="text-[10px] font-bold text-[#8A9BB5] uppercase tracking-[0.2em] px-1">Project Roadmap Details</label>
-                         <textarea 
-                            rows={4}
-                            placeholder="Tell us about your mission, goals, and target timeline..."
-                            required
-                            className="w-full bg-[#080C14] border border-white/10 rounded-3xl px-6 py-5 text-[#F0F4FF] focus:outline-none focus:border-[#00E5FF]/40 transition-all font-medium placeholder:text-white/10 resize-none"
-                         ></textarea>
-                      </div>
+
+
+
 
                       <button 
                          type="submit"

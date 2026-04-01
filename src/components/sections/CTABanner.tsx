@@ -1,85 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export function CTABanner() {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSend = () => {
+    if (!email.trim()) return;
+    setSent(true);
+    setEmail("");
+    setTimeout(() => setSent(false), 4000);
+  };
+
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-[#0A0F1A]">
-      {/* Mesh Gradient Background */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent z-20" />
-      
-      <div className="absolute inset-0 z-10 w-full h-full">
-         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-         <div className="absolute top-1/2 left-1/2 w-[800px] h-[400px] bg-[#00E5FF]/10 rounded-full blur-[160px] -translate-x-1/2 -translate-y-1/2" />
-         <div className="absolute top-1/4 right-[5%] w-[400px] h-[400px] bg-[#FFD700]/5 rounded-full blur-[140px]" />
+    <div id="contact" style={{ background: "transparent", position: "relative", overflow: "hidden", zIndex: 1, textAlign: "center" }} className="cta-section">
+      {/* Radial glow */}
+      <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", width:"500px", height:"500px", borderRadius:"50%", background:"radial-gradient(circle,rgba(139,69,240,.12) 0%,transparent 65%)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", top:"28%", left:0, right:0, height:"1px", background:"linear-gradient(90deg,transparent,rgba(139,69,240,.14),transparent)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", bottom:"28%", left:0, right:0, height:"1px", background:"linear-gradient(90deg,transparent,rgba(232,121,249,.09),transparent)", pointerEvents:"none" }} />
+
+      <div style={{ position:"relative", zIndex:1, maxWidth:"720px", margin:"0 auto" }}>
+        <motion.p initial={{ opacity:0, y:10 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} style={{ fontFamily:"'Fraunces',serif", fontSize:".6rem", letterSpacing:".22em", textTransform:"uppercase", color:"rgba(255,255,255,.28)", marginBottom:"18px", fontStyle:"italic" }}>
+          — Let&apos;s Create Something Amazing —
+        </motion.p>
+
+        <motion.h2 initial={{ opacity:0, y:22 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:.1, duration:.7 }} style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(2.4rem,8vw,6.5rem)", fontWeight:700, lineHeight:1.0, letterSpacing:"-.025em", marginBottom:"20px" }}>
+          Ready to Build<br />
+          <em style={{ fontStyle:"italic", color:"#e879f9" }}>Something</em><br />
+          Legendary?
+        </motion.h2>
+
+        <motion.p initial={{ opacity:0, y:10 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:.2 }} style={{ fontSize:"clamp(.88rem,1.8vw,1rem)", color:"rgba(255,255,255,.4)", maxWidth:"400px", margin:"0 auto 36px", lineHeight:1.8, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
+          Have a project in mind? Drop your email and we&apos;ll get back within 24 hours with a free strategy call.
+        </motion.p>
+
+        <motion.div initial={{ opacity:0, y:14 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:.3 }} className="cta-btns">
+          <a href="mailto:info@digitechavenue.com" className="btn-pill solid">info@digitechavenue.com →</a>
+          <Link href="/contact" className="btn-pill violet-fill">Book a Free Call</Link>
+        </motion.div>
+
+        {/* Email row */}
+        <motion.div initial={{ opacity:0, y:14 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:.4 }} className="cta-email-row">
+          <input
+            type="email" placeholder="Your email address…" value={email}
+            onChange={e => setEmail(e.target.value)}
+            onKeyDown={e => e.key === "Enter" && handleSend()}
+            style={{
+              flex:1, background:"rgba(255,255,255,.05)", border:"1.5px solid rgba(255,255,255,.09)",
+              borderRadius:"100px", padding:"13px 20px", outline:"none",
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:".88rem", color:"#fff",
+              transition:"border-color .3s", minWidth:0,
+            }}
+            onFocus={e => e.target.style.borderColor = "rgba(139,69,240,.5)"}
+            onBlur={e  => e.target.style.borderColor = "rgba(255,255,255,.09)"}
+          />
+          <button onClick={handleSend} className="cta-send-btn" style={{ background: sent ? "#4ade80" : "#fff" }}>
+            {sent ? "Sent!" : "Let's Talk →"}
+          </button>
+        </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-20 w-full max-w-[1400px]">
-        <div className="bg-[#0F1724] border border-white/5 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
-           {/* Inner glow on the card */}
-           <div className="absolute inset-0 bg-gradient-to-tr from-[#00E5FF]/2 to-transparent opacity-40 pointer-events-none" />
+      <style>{`
+        .cta-section { padding: 80px 16px; }
+        @media(min-width:640px)  { .cta-section { padding: 100px 32px; } }
+        @media(min-width:1280px) { .cta-section { padding: 130px 72px; } }
 
-           <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-sm font-bold text-[#FFD700] uppercase tracking-[0.2em] mb-6"
-           >
-              Ready to Grow?
-           </motion.span>
+        .cta-btns {
+          display: flex; flex-wrap: wrap; gap: 12px;
+          justify-content: center; margin-bottom: 0;
+        }
 
-           <motion.h2
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-[#F0F4FF] leading-tight mb-8 max-w-4xl"
-           >
-              Ready to Build Something <br />
-              <span className="text-gradient-cyan">Great Together?</span>
-           </motion.h2>
+        .cta-email-row {
+          display: flex; gap: 10px;
+          max-width: 460px; margin: 36px auto 0;
+          flex-direction: column;
+        }
+        @media(min-width:480px) { .cta-email-row { flex-direction: row; } }
 
-           <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="text-lg md:text-xl text-[#8A9BB5] max-w-2xl mx-auto mb-12 font-medium"
-           >
-              Let&apos;s talk about your project and see how DigiTech Avenue can engineering your growth. No commitment. Just possibilities.
-           </motion.p>
-
-           {/* Buttons */}
-           <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="flex flex-col sm:flex-row items-center gap-6"
-           >
-              <a
-                href="#contact"
-                className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-[#080C14] bg-gradient-to-r from-[#00E5FF] to-[#00B8D4] rounded-full shadow-lg shadow-cyan-500/40 hover:shadow-cyan-400/60 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-              >
-                 <span className="relative z-10 flex items-center gap-2">
-                    Book a Free Strategy Call
-                    <Calendar className="w-5 h-5" />
-                 </span>
-              </a>
-
-              <a
-                href="https://wa.me/917996998142"
-                className="group inline-flex items-center gap-3 text-lg font-bold text-[#F0F4FF] hover:text-[#00E5FF] transition-colors"
-              >
-                 <MessageSquare className="w-6 h-6" /> 
-                 <span>Chat on WhatsApp</span>
-                 <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-              </a>
-           </motion.div>
-        </div>
-      </div>
-    </section>
+        .cta-send-btn {
+          padding: 13px 24px; color: #0d0d1f;
+          border: none; border-radius: 100px; cursor: pointer;
+          font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
+          font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;
+          transition:background .3s, transform .2s; white-space:nowrap;
+          flex-shrink:0;
+        }
+        .cta-send-btn:hover { transform: scale(1.04); }
+        input::placeholder { color: rgba(255,255,255,.22); }
+      `}</style>
+    </div>
   );
 }

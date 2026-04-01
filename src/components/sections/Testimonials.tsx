@@ -1,136 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, MessageSquareQuote } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Star } from "lucide-react";
+import { useRef, useState } from "react";
 
 const testimonials = [
-  {
-    name: "Nikhil Kumar",
-    role: "E-Commerce Founder",
-    rating: 5,
-    text: "DigiTech Avenue transformed our online store. Our conversion rate increased by 200% within 3 months. Exceptional expertise and delivery.",
-  },
-  {
-    name: "Yash",
-    role: "SaaS Entrepreneur",
-    rating: 5,
-    text: "Result-oriented projects was their promise and they delivered exactly that. Our marketing ROI has never been higher.",
-  },
-  {
-    name: "Sarah Jenkins",
-    role: "Marketing Director",
-    rating: 5,
-    text: "From strategy to execution, they were unparalleled. Their dedication to our brand was impressive and clearly visible in the final results.",
-  },
-  {
-    name: "David Chen",
-    role: "CEO, TechLaunch",
-    rating: 5,
-    text: "A truly professional and premium agency. They understood our vision perfectly and engineered a high-performance web experience.",
-  },
-  {
-    name: "Priya Sharma",
-    role: "Founder, GrowthHub",
-    rating: 5,
-    text: "Best decision for our digital presence. They not only build websites but also educate us on brand maintenance. Highly recommended!",
-  },
-  {
-    name: "Marcus Thorne",
-    role: "Creative Director",
-    rating: 5,
-    text: "Sleek, confident, and technically excellent. They really are the Formula 1 team of the digital agency world. Unbeatable quality.",
-  },
+  { stars: 5, quote: "DigiTechAvenue transformed our digital presence. Conversion rate went up 226% in Q1 after launch. They architect growth, not just websites.", initials: "NK", name: "Nikhil Kumar", role: "CMO, NovaTech Inc." },
+  { stars: 5, quote: "Best agency we've ever worked with. The attention to detail is unreal. They delivered a product our competitors are still trying to copy.", initials: "SK", name: "Sophia Kim", role: "Founder, Aether Finance" },
+  { stars: 5, quote: "Our brand identity is absolutely stunning. DigiTechAvenue understood our vision immediately and elevated it beyond what we imagined.", initials: "JP", name: "James Park", role: "CEO, Pulse Creative" },
+  { stars: 5, quote: "Organic traffic up 180%, bounce rate down 45%. The ROI since the rebrand has been phenomenal. Incredible work from the whole DTA team.", initials: "AL", name: "Anika Lenz", role: "Marketing Director, Ember Commerce" },
 ];
 
 export function Testimonials() {
-  const [isPaused, setIsPaused] = useState(false);
+  const railRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+
+  const cardW = () => {
+    const c = railRef.current?.querySelector(".t-card") as HTMLElement;
+    return c ? c.offsetWidth + 14 : 300;
+  };
+  const go = (n: number) => {
+    const clamped = Math.max(0, Math.min(n, testimonials.length - 1));
+    setCurrent(clamped);
+    railRef.current?.scrollTo({ left: clamped * cardW(), behavior: "smooth" });
+  };
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-[#0A0F1A] relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5FF]/2 rounded-full blur-[180px] pointer-events-none" />
+    <div id="testimonials" style={{ background: "#13132b", overflow: "hidden", position: "relative", zIndex: 1 }} className="t-section">
+      <div style={{ position:"absolute", top:"50%", left:"-8%", transform:"translateY(-50%)", width:"400px", height:"400px", borderRadius:"50%", background:"radial-gradient(circle,rgba(139,69,240,.09) 0%,transparent 65%)", pointerEvents:"none" }} />
 
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-sm font-bold text-[#FFD700] uppercase tracking-[0.2em] mb-4"
-          >
-            Social Proof
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F0F4FF] leading-[1.1] mb-6"
-          >
-            Trusted by{" "}
-            <span className="text-gradient-cyan">Global Brands</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[#8A9BB5] text-lg"
-          >
-            Real feedback from clients who transformed their businesses with us.
-          </motion.p>
-        </div>
+      {/* Header */}
+      <motion.div initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:.7 }}>
+        <div className="eyebrow-pill">What Clients Say</div>
+        <h2 className="sec-title">Real Results,<br /><em>Real People</em></h2>
+      </motion.div>
 
-        {/* Testimonials Carousel (Marquee style) */}
-        <div 
-          className="relative flex overflow-hidden group"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Dual marquee for infinite loop effect */}
-          <div className={`flex shrink-0 gap-6 animate-marquee py-4 ${isPaused ? '[animation-play-state:paused]' : ''}`}>
-             {[...testimonials, ...testimonials].map((item, i) => (
-                <div 
-                  key={i}
-                  className="w-[300px] md:w-[400px] glass-card rounded-2xl p-8 border border-white/5 group/card transition-all duration-500 hover:border-[#00E5FF]/20"
-                >
-                  {/* Quote icon */}
-                  <div className="mb-6 opacity-40 group-hover/card:opacity-100 group-hover/card:text-[#00E5FF] transition-all">
-                    <MessageSquareQuote className="w-8 h-8" />
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex text-[#FFD700] gap-1 mb-4">
-                    {[...Array(item.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-
-                  {/* Text */}
-                  <p className="text-[#8A9BB5] text-[1.05rem] leading-relaxed mb-8 italic group-hover/card:text-[#F0F4FF] transition-colors">
-                    &quot;{item.text}&quot;
-                  </p>
-
-                  {/* Client Info */}
-                  <div className="flex items-center gap-4 border-t border-white/5 pt-6">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00E5FF] to-[#0F1724] flex items-center justify-center font-bold text-[#F0F4FF] shadow-lg">
-                      {item.name.charAt(0)}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#F0F4FF] leading-tight">{item.name}</h4>
-                      <p className="text-xs text-[#8A9BB5] uppercase tracking-wide font-mono mt-0.5">{item.role}</p>
-                    </div>
-                  </div>
-                </div>
-             ))}
-          </div>
-        </div>
+      {/* Rail */}
+      <div ref={railRef} className="t-rail">
+        {testimonials.map((t, i) => (
+          <motion.div key={i} className="t-card" initial={{ opacity:0, y:22 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i*.1, duration:.5 }}>
+            <div style={{ display:"flex", gap:"3px", marginBottom:"16px" }}>
+              {Array(t.stars).fill(0).map((_,j) => <Star key={j} style={{ width:"13px", height:"13px", color:"#e879f9", fill:"#e879f9" }} />)}
+            </div>
+            <p style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(.9rem,2.2vw,1.05rem)", fontStyle:"italic", lineHeight:1.62, color:"#fff", marginBottom:"24px" }}>
+              &ldquo;{t.quote}&rdquo;
+            </p>
+            <div style={{ display:"flex", alignItems:"center", gap:"13px" }}>
+              <div style={{ width:"42px", height:"42px", borderRadius:"50%", background:"linear-gradient(135deg,#6c2bd9,#e879f9)", flexShrink:0, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Fraunces',serif", fontSize:".85rem", color:"#fff", fontWeight:700, fontStyle:"italic" }}>{t.initials}</div>
+              <div>
+                <div style={{ fontSize:".6rem", letterSpacing:".1em", textTransform:"uppercase", color:"#fff", fontWeight:600, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{t.name}</div>
+                <div style={{ fontSize:".72rem", color:"rgba(255,255,255,.38)", marginTop:"3px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{t.role}</div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Side gradient Fades for continuous feel */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1A] via-transparent to-[#0A0F1A] z-20 pointer-events-none opacity-80" />
-    </section>
+      {/* Nav */}
+      <motion.div initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} className="t-nav">
+        {[{ fn: ()=>go(current-1), label:"←" },{ fn:()=>go(current+1), label:"→" }].map((b,i)=>(
+          <button key={i} onClick={b.fn} className="t-nav-btn">{b.label}</button>
+        ))}
+        <span style={{ fontSize:".56rem", color:"rgba(255,255,255,.25)", marginLeft:"8px", fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:".1em" }}>{current+1} / {testimonials.length}</span>
+      </motion.div>
+
+      <style>{`
+        .t-section { padding: 64px 0; }
+        .t-section > div:nth-child(2) { padding: 0 16px 36px; }
+        @media(min-width:640px)  { .t-section > div:nth-child(2) { padding: 0 32px 40px; } }
+        @media(min-width:1024px) { .t-section > div:nth-child(2) { padding: 0 48px 48px; } }
+        @media(min-width:1280px) { .t-section { padding: 110px 0; } .t-section > div:nth-child(2) { padding: 0 72px 56px; } }
+
+        /* Rail */
+        .t-rail {
+          display: flex; gap: 14px;
+          overflow-x: auto; scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch; scrollbar-width: none;
+          padding: 0 16px 4px;
+        }
+        .t-rail::-webkit-scrollbar { display: none; }
+        @media(min-width:640px)  { .t-rail { padding-left: 32px; padding-right: 32px; gap: 16px; } }
+        @media(min-width:1024px) { .t-rail { padding-left: 48px; padding-right: 48px; } }
+        @media(min-width:1280px) { .t-rail { padding-left: 72px; padding-right: 72px; } }
+
+        /* Card */
+        .t-card {
+          flex: 0 0 clamp(260px, 84vw, 500px);
+          scroll-snap-align: start;
+          background: rgba(255,255,255,.035);
+          border: 1px solid rgba(255,255,255,.07);
+          border-radius: 18px; padding: 28px 22px;
+          transition: border-color .3s, transform .3s;
+        }
+        @media(min-width:768px) { .t-card { flex: 0 0 clamp(300px, 46vw, 500px); padding: 32px 28px; } }
+        .t-card:hover { border-color: rgba(139,69,240,.3) !important; transform: translateY(-4px) !important; }
+
+        /* Nav */
+        .t-nav { display:flex; align-items:center; gap:10px; padding: 24px 16px 0; }
+        @media(min-width:640px)  { .t-nav { padding-left: 32px; } }
+        @media(min-width:1024px) { .t-nav { padding-left: 48px; } }
+        @media(min-width:1280px) { .t-nav { padding-left: 72px; } }
+
+        .t-nav-btn {
+          width:40px; height:40px; border-radius:50%;
+          border:1.5px solid rgba(255,255,255,.1);
+          background:transparent; color:rgba(255,255,255,.38);
+          font-size:.95rem; cursor:pointer; transition:all .3s;
+          display:flex; align-items:center; justify-content:center;
+        }
+        .t-nav-btn:hover { border-color:rgba(255,255,255,.35) !important; color:#fff !important; background:rgba(255,255,255,.05) !important; }
+      `}</style>
+    </div>
   );
 }

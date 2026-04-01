@@ -1,87 +1,99 @@
-import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-satoshi",
+// ── Fonts — display:swap avoids render-blocking ─────────────────────────────
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700"],
+  style: ["normal"],
+  display: "swap",
+  preload: true,
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const fraunces = Fraunces({
+  variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: true,
 });
 
-// Use DM Sans as fallback for heading font too (Clash Display is a premium font)
-const headingFont = DM_Sans({
-  variable: "--font-clash",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
+// ── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: "DigiTech Avenue | Premium Digital Agency — Web Design & Development",
-  description: "We build digital experiences that turn visitors into revenue. Premium web design, UI/UX, mobile apps, SEO & digital marketing agency. 200+ projects delivered.",
+  title: "DigiTechAvenue — We Make Digital Magic",
+  description:
+    "DigiTechAvenue crafts brands, websites, and digital products that feel alive — from Pune to the world. Award-winning digital agency.",
   keywords: [
-    "digital agency",
+    "digital agency Pune",
     "web design agency",
-    "UI UX design agency", 
-    "website development company",
-    "digital marketing agency",
-    "mobile app development",
-    "DigiTech Avenue",
-    "premium web development",
+    "UI UX design",
+    "website development",
+    "SEO agency",
+    "DigiTechAvenue",
+    "brand identity",
   ],
-  authors: [{ name: "DigiTech Avenue" }],
-  creator: "DigiTech Avenue",
+  authors:   [{ name: "DigiTech Avenue" }],
+  creator:   "DigiTech Avenue",
   publisher: "DigiTech Avenue",
   metadataBase: new URL("https://digitechavenue.vercel.app"),
   openGraph: {
-    title: "DigiTech Avenue | Premium Digital Agency",
-    description: "We build digital experiences that turn visitors into revenue. 200+ projects. 98% client satisfaction.",
-    url: "https://digitechavenue.vercel.app",
-    siteName: "DigiTech Avenue",
-    locale: "en_US",
-    type: "website",
+    title:       "DigiTechAvenue | Award-Winning Digital Agency",
+    description: "We craft brands, websites, and digital products that feel alive. 340+ projects. 98% retention.",
+    url:         "https://digitechavenue.vercel.app",
+    siteName:    "DigiTech Avenue",
+    locale:      "en_US",
+    type:        "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "DigiTech Avenue | Premium Digital Agency",
-    description: "We build digital experiences that turn visitors into revenue.",
+    card:        "summary_large_image",
+    title:       "DigiTechAvenue | We Make Digital Magic",
+    description: "We craft brands, websites, and digital products that feel alive.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: "/apple-touch-icon.png",
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0d0d1f",
+  width:       "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 import { FloatingContact } from "@/components/FloatingContact";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Header }          from "@/components/Header";
+import { Footer }          from "@/components/Footer";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Preconnect for faster font resolution */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for third-party resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body
         suppressHydrationWarning
-        className={`${dmSans.variable} ${jetbrainsMono.variable} ${headingFont.variable} antialiased bg-[#080C14] text-[#F0F4FF]`}
-        style={{ fontFamily: 'var(--font-satoshi), system-ui, sans-serif' }}
+        className={`${plusJakartaSans.variable} ${fraunces.variable} antialiased`}
+        style={{
+          background: "#0d0d1f",
+          color: "#ffffff",
+          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+          overflowX: "hidden",
+        }}
       >
         <Header />
         {children}

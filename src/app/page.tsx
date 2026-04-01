@@ -2,51 +2,51 @@
 
 import { Hero } from "@/components/sections/Hero";
 import { ServicesTicker } from "@/components/sections/ServicesTicker";
-import { ValueProp } from "@/components/sections/ValueProp";
+import { RecentWork } from "@/components/sections/RecentWork";
 import { Services } from "@/components/sections/Services";
 import { Stats } from "@/components/sections/Stats";
-import { RecentWork } from "@/components/sections/RecentWork";
-import { Process } from "@/components/sections/Process";
+import { ValueProp } from "@/components/sections/ValueProp";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { FAQ } from "@/components/sections/FAQ";
-import { Contact } from "@/components/sections/Contact";
+import { Process } from "@/components/sections/Process";
+import { TechStack } from "@/components/sections/TechStack";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#080C14] text-[#F0F4FF] overflow-x-hidden">
-      {/* 1. Hero Section */}
+    <main style={{ minHeight: "100vh", background: "var(--navy)", color: "var(--white)", overflowX: "hidden" }}>
+      {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Services Ticker / Marquee */}
+      {/* 2. Ticker */}
       <ServicesTicker />
 
-      {/* 3. About / Value Proposition */}
-      <ValueProp />
-
-      {/* 4. Services Grid */}
-      <Services />
-
-      {/* 5. Results / Stats */}
-      <Stats />
-
-      {/* 6. Portfolio Showcase */}
+      {/* 3. Work */}
       <RecentWork />
 
-      {/* 7. Process Timeline */}
-      <Process />
+      {/* 4. Services */}
+      <Services />
 
-      {/* 8. Testimonials Carousel */}
+      {/* 5. Stats Band */}
+      <Stats />
+
+      {/* 6. About */}
+      <ValueProp />
+
+      {/* 7. Testimonials */}
       <Testimonials />
 
-      {/* 9. FAQ Accordion */}
-      <FAQ />
+      {/* 8. Process */}
+      <Process />
 
-      {/* 10. Contact Section */}
-      <Contact />
+      {/* 9. Tech Stack */}
+      <TechStack />
 
-      {/* 11. Final CTA Banner */}
+      {/* 10. CTA */}
       <CTABanner />
+
+      {/* 11. Contact Form */}
+      <Contact />
     </main>
   );
 }

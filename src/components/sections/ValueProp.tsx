@@ -1,112 +1,103 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Shield, TrendingUp, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { MapPin } from "lucide-react";
 
-const differentiators = [
-  {
-    icon: Zap,
-    title: "Lightning Speed",
-    stat: "2x faster delivery",
-    description: "We move fast without breaking things. Most projects go live in under 4 weeks.",
-    gradient: "from-[#00E5FF] to-[#00B8D4]",
-  },
-  {
-    icon: Shield,
-    title: "Premium Quality",
-    stat: "98% satisfaction rate",
-    description: "Every pixel is intentional. Every line of code is optimized. No shortcuts.",
-    gradient: "from-[#FFD700] to-[#FFA500]",
-  },
-  {
-    icon: TrendingUp,
-    title: "Proven Results",
-    stat: "$10M+ revenue generated",
-    description: "We don't just make things look good — we make them perform. Real metrics, real growth.",
-    gradient: "from-[#00E5FF] to-[#7C3AED]",
-  },
+const facts = [
+  { label: "Headquarters",       value: "Pune, Maharashtra, India" },
+  { label: "Founded",            value: "2019" },
+  { label: "Team Size",          value: "50+ specialists" },
+  { label: "Awards Won",         value: "18+ industry awards" },
+  { label: "Revenue Generated",  value: "$2B+ for clients" },
+];
+
+const numCells = [
+  { n: "50",  suffix: "+", l: "Team members" },
+  { n: "18",  suffix: "+", l: "Awards won" },
+  { n: "$2",  suffix: "B", l: "Revenue generated" },
+  { n: "40",  suffix: "+", l: "Countries served" },
 ];
 
 export function ValueProp() {
   return (
-    <section className="py-20 md:py-28 bg-[#080C14] relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00E5FF]/3 rounded-full blur-[150px] pointer-events-none" />
+    <div id="about" style={{ background: "transparent", position: "relative", zIndex: 1 }} className="ab-section">
+      <motion.div initial={{ opacity:0, y:10 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} className="eyebrow-pill">
+        About DigiTechAvenue
+      </motion.div>
 
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 w-full max-w-[1400px]">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-sm font-bold text-[#00E5FF] uppercase tracking-[0.2em] mb-4"
-          >
-            Why DigiTech Avenue
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F0F4FF] leading-[1.1] mb-6"
-          >
-            Not Just Another Agency.{" "}
-            <span className="text-gradient-cyan">Your Growth Partner.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[#8A9BB5] text-lg leading-relaxed"
-          >
-            We combine strategic thinking, modern design, and performance-driven development to create digital platforms that attract attention, build trust, and generate enquiries.
-          </motion.p>
-        </div>
+      <div className="ab-grid">
+        {/* Left */}
+        <motion.div initial={{ opacity:0, x:-24 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:.7 }}>
+          <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(1.9rem,6.5vw,4.2rem)", fontWeight:700, lineHeight:1.05, marginBottom:"20px" }}>
+            We Don&apos;t<br />Just Build{" "}
+            <em style={{ fontStyle:"italic", color:"#e879f9" }}>Websites.</em><br />
+            We Build Futures.
+          </h2>
+          <p style={{ fontSize:"clamp(.85rem,1.8vw,.92rem)", lineHeight:1.85, color:"rgba(255,255,255,.42)", marginBottom:"12px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
+            We build growth engines. Since 2019, DigiTechAvenue has partnered with visionary startups and Fortune 500 companies to create digital experiences that truly matter — in Pune and across the globe.
+          </p>
+          <p style={{ fontSize:"clamp(.85rem,1.8vw,.92rem)", lineHeight:1.85, color:"rgba(255,255,255,.42)", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
+            Our cross-disciplinary team works without silos. Every deliverable is more coherent, more beautiful, and more effective because of it.
+          </p>
 
-        {/* Differentiator Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {differentiators.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.5 }}
-              className="group glass-card rounded-2xl p-8 hover:border-[rgba(0,229,255,0.15)] transition-all duration-500 hover:-translate-y-2"
-            >
-              {/* Icon */}
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                <item.icon className="w-7 h-7 text-[#080C14]" strokeWidth={2.5} />
+          <div style={{ marginTop:"28px" }}>
+            {facts.map(f => (
+              <div key={f.label} className="fact-row">
+                <span>{f.label}</span>
+                <strong style={{ color:"#fff", fontWeight:600 }}>{f.value}</strong>
+                <span style={{ color:"#a855f7" }}>→</span>
               </div>
+            ))}
+          </div>
+        </motion.div>
 
-              <h3 className="text-xl font-bold text-[#F0F4FF] mb-2">{item.title}</h3>
-              
-              {/* Power stat */}
-              <p className="text-sm font-bold text-[#00E5FF] mb-4 font-mono tracking-wide">{item.stat}</p>
+        {/* Right */}
+        <motion.div initial={{ opacity:0, x:24 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:.7 }}>
+          {/* Visual box */}
+          <div style={{ width:"100%", aspectRatio:"4/3", borderRadius:"16px", overflow:"hidden", position:"relative", background:"#1a1a38", border:"1px solid rgba(255,255,255,.07)" }}>
+            <div style={{ position:"absolute", inset:0, background:"linear-gradient(135deg,#0d0d2a 0%,#1a1050 40%,#2d1575 75%,#3b1880 100%)" }} />
+            <div style={{ position:"absolute", inset:0, opacity:.055, backgroundImage:"radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px)", backgroundSize:"26px 26px" }} />
+            <div style={{ position:"absolute", bottom:"-18px", right:"-6px", fontFamily:"'Fraunces',serif", fontSize:"clamp(5rem,20vw,12rem)", fontWeight:700, fontStyle:"italic", color:"rgba(255,255,255,.04)", lineHeight:1, userSelect:"none", pointerEvents:"none" }}>DTA</div>
+            <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", top:"14px", left:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif", display:"flex", alignItems:"center", gap:"5px" }}>
+              <MapPin style={{ width:"10px", height:"10px" }} />Pune, India
+            </div>
+            <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", bottom:"14px", right:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Est. 2019</div>
+          </div>
 
-              <p className="text-[#8A9BB5] text-[0.95rem] leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Mini CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 text-[#00E5FF] font-semibold hover:gap-3 transition-all"
-          >
-            Our Approach <ArrowRight className="w-4 h-4" />
-          </Link>
+          {/* Stat cells */}
+          <div className="ab-stat-grid">
+            {numCells.map(c => (
+              <div key={c.l} style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:"13px", padding:"18px 14px" }}>
+                <div style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(1.3rem,4vw,1.9rem)", fontWeight:700, fontStyle:"italic", lineHeight:1, color:"#fff" }}>
+                  {c.n}<em style={{ color:"#e879f9", fontStyle:"normal", fontSize:".58em" }}>{c.suffix}</em>
+                </div>
+                <div style={{ fontSize:".48rem", letterSpacing:".1em", textTransform:"uppercase", color:"rgba(255,255,255,.32)", marginTop:"5px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{c.l}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
-    </section>
+
+      <style>{`
+        .ab-section { padding: 64px 16px; }
+        @media(min-width:640px)  { .ab-section { padding: 80px 32px; } }
+        @media(min-width:1024px) { .ab-section { padding: 100px 48px; } }
+        @media(min-width:1280px) { .ab-section { padding: 110px 72px; } }
+
+        .ab-grid { display:grid; grid-template-columns:1fr; gap:48px; margin-top:44px; }
+        @media(min-width:960px) { .ab-grid { grid-template-columns:1fr 1fr; gap:72px; align-items:start; } }
+
+        .fact-row {
+          display:flex; align-items:center; justify-content:space-between;
+          padding:12px 0; border-bottom:1px solid rgba(255,255,255,.07);
+          font-size:clamp(.78rem,1.6vw,.82rem); color:rgba(255,255,255,.4);
+          gap:10px; flex-wrap:wrap; font-family:'Plus Jakarta Sans',sans-serif;
+          transition:color .3s;
+        }
+        .fact-row:hover { color: rgba(255,255,255,.65) !important; }
+
+        .ab-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+      `}</style>
+    </div>
   );
 }
