@@ -190,6 +190,36 @@ export default function ContactPage() {
                 </motion.div>
              </div>
           </div>
+
+          {/* Map Section */}
+          <motion.div
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+             className="mt-24 rounded-[2.5rem] overflow-hidden border border-white/5 relative group"
+          >
+             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d1f] via-transparent to-transparent z-10 pointer-events-none" />
+             <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.05436069!2d77.55681057!3d13.0366568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d72f81344fd%3A0x620cecce103a5a98!2sDigitech+Avenue!5e0!3m2!1sen!2sin!4v1711964000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style={{ border: 0, filter: "grayscale(1) invert(1) contrast(1.1) opacity(0.8)" }} 
+                allowFullScreen={true}
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale-filter"
+             />
+             <div className="absolute bottom-6 right-6 z-20">
+                <a 
+                   href="https://www.google.com/maps/dir//Digitech+Avenue,+1st+B+St,+Gokula+Extension,+Mathikere+Extension,+Mathikere,+Bengaluru,+Karnataka+560054/@13.0366568,77.55681057,17z"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="btn-pill solid !text-[10px] !px-6 !py-3 flex items-center gap-2"
+                >
+                   Open in Maps <ArrowUpRight className="w-3 h-3" />
+                </a>
+             </div>
+          </motion.div>
        </div>
     </main>
   );
