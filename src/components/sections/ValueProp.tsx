@@ -11,12 +11,7 @@ const facts = [
   { label: "Revenue Generated",  value: "$2B+ for clients" },
 ];
 
-const numCells = [
-  { n: "50",  suffix: "+", l: "Team members" },
-  { n: "18",  suffix: "+", l: "Awards won" },
-  { n: "$2",  suffix: "B", l: "Revenue generated" },
-  { n: "40",  suffix: "+", l: "Countries served" },
-];
+const numCells: any[] = [];
 
 export function ValueProp() {
   return (
@@ -58,22 +53,16 @@ export function ValueProp() {
             <div style={{ position:"absolute", inset:0, background:"linear-gradient(135deg,#0d0d2a 0%,#1a1050 40%,#2d1575 75%,#3b1880 100%)" }} />
             <div style={{ position:"absolute", inset:0, opacity:.055, backgroundImage:"radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px)", backgroundSize:"26px 26px" }} />
             <div style={{ position:"absolute", bottom:"-18px", right:"-6px", fontFamily:"'Fraunces',serif", fontSize:"clamp(5rem,20vw,12rem)", fontWeight:700, fontStyle:"italic", color:"rgba(255,255,255,.04)", lineHeight:1, userSelect:"none", pointerEvents:"none" }}>DTA</div>
-            <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", top:"14px", left:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif", display:"flex", alignItems:"center", gap:"5px" }}>
+            <a 
+              href="https://www.google.com/maps/dir//Digitech+Avenue,+1st+B+St,+Gokula+Extension,+Mathikere+Extension,+Mathikere,+Bengaluru,+Karnataka+560054/@19.136512,74.7208704,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bae3d72f81344fd:0x620cecce103a5a98!2m2!1d77.5593855!2d13.0366568?entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", top:"14px", left:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif", display:"flex", alignItems:"center", gap:"5px", transition: "transform .2s", zIndex: 10 }}
+              className="hover:scale-105"
+            >
               <MapPin style={{ width:"10px", height:"10px" }} />Bengaluru, India
-            </div>
+            </a>
             <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", bottom:"14px", right:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Est. 2019</div>
-          </div>
-
-          {/* Stat cells */}
-          <div className="ab-stat-grid">
-            {numCells.map(c => (
-              <div key={c.l} style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:"13px", padding:"18px 14px" }}>
-                <div style={{ fontFamily:"'Fraunces',serif", fontSize:"clamp(1.3rem,4vw,1.9rem)", fontWeight:700, fontStyle:"italic", lineHeight:1, color:"#fff" }}>
-                  {c.n}<em style={{ color:"#e879f9", fontStyle:"normal", fontSize:".58em" }}>{c.suffix}</em>
-                </div>
-                <div style={{ fontSize:".48rem", letterSpacing:".1em", textTransform:"uppercase", color:"rgba(255,255,255,.32)", marginTop:"5px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{c.l}</div>
-              </div>
-            ))}
           </div>
         </motion.div>
       </div>

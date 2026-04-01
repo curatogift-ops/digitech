@@ -46,18 +46,23 @@ export default function ContactPage() {
                    </p>
 
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-12 mb-16">
-                      <div className="group">
+                      <a 
+                        href="https://www.google.com/maps/dir//Digitech+Avenue,+1st+B+St,+Gokula+Extension,+Mathikere+Extension,+Mathikere,+Bengaluru,+Karnataka+560054/@19.136512,74.7208704,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bae3d72f81344fd:0x620cecce103a5a98!2m2!1d77.5593855!2d13.0366568?entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block"
+                      >
                          <div className="flex items-center gap-4 mb-4">
                             <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/8 flex items-center justify-center text-[#a855f7] group-hover:border-[#a855f7]/40 transition-all">
                                <MapPin className="w-5 h-5" strokeWidth={1.5} />
                             </div>
                             <h3 style={{ fontFamily: "'Fraunces', serif" }} className="font-bold text-white text-lg tracking-tight italic">Our Hub</h3>
                          </div>
-                         <p className="text-white/30 text-sm leading-relaxed px-1 font-medium">
+                         <p className="text-white/30 text-sm hover:text-white transition-colors leading-relaxed px-1 font-medium">
                             Mathikere Extension, <br/>
                             Bengaluru, KA 560054
                          </p>
-                      </div>
+                      </a>
 
                       <div className="group">
                          <div className="flex items-center gap-4 mb-4">

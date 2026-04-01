@@ -4,11 +4,25 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const projects = [
-  { num: "01 / 05", tag: "Branding + Web",    name: "NovaTech Platform",  bg: "linear-gradient(145deg,#0d1b3e,#1a2d6e,#1e3a8a)", glow: "radial-gradient(circle at 70% 20%,rgba(139,69,240,.28),transparent 55%)" },
-  { num: "02 / 05", tag: "UX + Development",  name: "Aether Finance",     bg: "linear-gradient(145deg,#1a0d3e,#3b1278,#5b21b6)", glow: "radial-gradient(circle at 30% 70%,rgba(232,121,249,.18),transparent 55%)" },
-  { num: "03 / 05", tag: "Motion + Identity", name: "Pulse Creative",     bg: "linear-gradient(145deg,#0a2818,#0f4a2a,#166534)", glow: "radial-gradient(circle at 75% 25%,rgba(255,255,255,.10),transparent 50%)" },
-  { num: "04 / 05", tag: "E-Commerce + CRO",  name: "Ember Commerce",     bg: "linear-gradient(145deg,#2d1515,#5c1a1a,#991b1b)", glow: "radial-gradient(circle at 40% 75%,rgba(232,121,249,.18),transparent 55%)" },
-  { num: "05 / 05", tag: "SaaS + Product",    name: "Vanta Dashboard",    bg: "linear-gradient(145deg,#0a1628,#0e2442,#1e3a5f)", glow: "radial-gradient(circle at 60% 30%,rgba(139,69,240,.2),transparent 55%)" },
+  { 
+    num: "01 / 07", tag: "E-Commerce + Luxury Branding", 
+    name: "Curato Gift",  
+    img: "/luxury-gift.png",
+    bg: "linear-gradient(145deg,#0d0d1f,#1a1a38)",
+    glow: "radial-gradient(circle at 70% 20%,rgba(139,69,240,.3),transparent 65%)"
+  },
+  { 
+    num: "02 / 07", tag: "Premium Fashion + UX",  
+    name: "Sider Lehenga", 
+    img: "/premium-fashion.png",
+    bg: "linear-gradient(145deg,#0d0d1f,#2d152d)",
+    glow: "radial-gradient(circle at 30% 70%,rgba(232,121,249,.2),transparent 65%)"
+  },
+  { num: "03 / 07", tag: "Branding + Web",    name: "NovaTech Platform",  bg: "linear-gradient(145deg,#0d1b3e,#1a2d6e,#1e3a8a)", glow: "radial-gradient(circle at 70% 20%,rgba(139,69,240,.28),transparent 55%)" },
+  { num: "04 / 07", tag: "UX + Development",  name: "Aether Finance",     bg: "linear-gradient(145deg,#1a0d3e,#3b1278,#5b21b6)", glow: "radial-gradient(circle at 30% 70%,rgba(232,121,249,.18),transparent 55%)" },
+  { num: "05 / 07", tag: "Motion + Identity", name: "Pulse Creative",     bg: "linear-gradient(145deg,#0a2818,#0f4a2a,#166534)", glow: "radial-gradient(circle at 75% 25%,rgba(255,255,255,.10),transparent 50%)" },
+  { num: "06 / 07", tag: "E-Commerce + CRO",  name: "Ember Commerce",     bg: "linear-gradient(145deg,#2d1515,#5c1a1a,#991b1b)", glow: "radial-gradient(circle at 40% 75%,rgba(232,121,249,.18),transparent 55%)" },
+  { num: "07 / 07", tag: "SaaS + Product",    name: "Vanta Dashboard",    bg: "linear-gradient(145deg,#0a1628,#0e2442,#1e3a5f)", glow: "radial-gradient(circle at 60% 30%,rgba(139,69,240,.2),transparent 55%)" },
 ];
 
 export function RecentWork() {
@@ -54,7 +68,9 @@ export function RecentWork() {
             viewport={{ once:true }}
             transition={{ delay: i*.1, duration:.5 }}
             className="rw-card"
-            style={{ background: p.bg }}
+            style={{ 
+              background: (p as any).img ? `url(${(p as any).img}) center/cover no-repeat` : p.bg 
+            }}
           >
             <div style={{ position:"absolute", inset:0, background: p.glow }} />
             {/* Badge */}

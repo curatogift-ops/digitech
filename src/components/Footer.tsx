@@ -21,7 +21,7 @@ const footerLinks = [
   { title: "Contact", links: [
     { name: "info@digitechavenue.com", href: "mailto:info@digitechavenue.com" },
     { name: "+91 799 699 8142",        href: "tel:+917996998142" },
-    { name: "Bengaluru, Karnataka",       href: "#" },
+    { name: "Bengaluru, Karnataka",       href: "https://www.google.com/maps/dir//Digitech+Avenue,+1st+B+St,+Gokula+Extension,+Mathikere+Extension,+Mathikere,+Bengaluru,+Karnataka+560054/@19.136512,74.7208704,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bae3d72f81344fd:0x620cecce103a5a98!2m2!1d77.5593855!2d13.0366568?entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D" },
     { name: "Book a Discovery Call",   href: "/contact" },
   ]},
 ];
