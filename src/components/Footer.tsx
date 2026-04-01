@@ -21,7 +21,7 @@ const footerLinks = [
   { title: "Contact", links: [
     { name: "info@digitechavenue.com", href: "mailto:info@digitechavenue.com" },
     { name: "+91 799 699 8142",        href: "tel:+917996998142" },
-    { name: "Pune, Maharashtra",       href: "#" },
+    { name: "Bengaluru, Karnataka",       href: "#" },
     { name: "Book a Discovery Call",   href: "/contact" },
   ]},
 ];
@@ -44,7 +44,7 @@ export function Footer() {
               Digitech<em style={{ fontStyle:"normal", color:"#e879f9" }}>Avenue</em><em style={{ fontStyle:"normal", color:"#a855f7" }}>.</em>
             </div>
             <p style={{ fontSize:".8rem", lineHeight:1.75, color:"rgba(255,255,255,.32)", maxWidth:"220px", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:"20px" }}>
-              Building extraordinary digital experiences for ambitious companies — from Pune to the world.
+              Building extraordinary digital experiences for ambitious companies — from Bengaluru to the world.
             </p>
             <div style={{ display:"flex", gap:"9px" }}>
               {socials.map(({ Icon, label, href }) => (

@@ -97,7 +97,7 @@ export function Hero() {
             }}
           >
             <strong style={{ color: "#fff", fontWeight: 600 }}>DigiTechAvenue</strong>{" "}
-            crafts brands, websites, and digital products that feel alive — from Pune to the world.
+            crafts brands, websites, and digital products that feel alive — from Bengaluru to the world.
           </motion.p>
 
           <motion.div

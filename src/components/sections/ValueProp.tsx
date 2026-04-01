@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 const facts = [
-  { label: "Headquarters",       value: "Pune, Maharashtra, India" },
+  { label: "Headquarters",       value: "Bengaluru, Karnataka, India" },
   { label: "Founded",            value: "2019" },
   { label: "Team Size",          value: "50+ specialists" },
   { label: "Awards Won",         value: "18+ industry awards" },
@@ -34,7 +34,7 @@ export function ValueProp() {
             We Build Futures.
           </h2>
           <p style={{ fontSize:"clamp(.85rem,1.8vw,.92rem)", lineHeight:1.85, color:"rgba(255,255,255,.42)", marginBottom:"12px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
-            We build growth engines. Since 2019, DigiTechAvenue has partnered with visionary startups and Fortune 500 companies to create digital experiences that truly matter — in Pune and across the globe.
+            We build growth engines. Since 2019, DigiTechAvenue has partnered with visionary startups and Fortune 500 companies to create digital experiences that truly matter — in Bengaluru and across the globe.
           </p>
           <p style={{ fontSize:"clamp(.85rem,1.8vw,.92rem)", lineHeight:1.85, color:"rgba(255,255,255,.42)", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
             Our cross-disciplinary team works without silos. Every deliverable is more coherent, more beautiful, and more effective because of it.
@@ -59,7 +59,7 @@ export function ValueProp() {
             <div style={{ position:"absolute", inset:0, opacity:.055, backgroundImage:"radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px)", backgroundSize:"26px 26px" }} />
             <div style={{ position:"absolute", bottom:"-18px", right:"-6px", fontFamily:"'Fraunces',serif", fontSize:"clamp(5rem,20vw,12rem)", fontWeight:700, fontStyle:"italic", color:"rgba(255,255,255,.04)", lineHeight:1, userSelect:"none", pointerEvents:"none" }}>DTA</div>
             <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", top:"14px", left:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif", display:"flex", alignItems:"center", gap:"5px" }}>
-              <MapPin style={{ width:"10px", height:"10px" }} />Pune, India
+              <MapPin style={{ width:"10px", height:"10px" }} />Bengaluru, India
             </div>
             <div style={{ position:"absolute", background:"#fff", color:"#0d0d1f", fontSize:".52rem", letterSpacing:".1em", textTransform:"uppercase", padding:"6px 12px", fontWeight:700, borderRadius:"100px", bottom:"14px", right:"14px", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Est. 2019</div>
           </div>
