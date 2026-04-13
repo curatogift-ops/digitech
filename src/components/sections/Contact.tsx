@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 const contactItems = [
   { Icon: Mail,   label: "Email",    val: "info@digitechavenue.com", href: "mailto:info@digitechavenue.com" },
   { Icon: Phone,  label: "Phone",    val: "+91 799 699 8142",        href: "tel:+917996998142" },
-  { Icon: MapPin, label: "Location", val: "Pune, Maharashtra, India", href: "#" },
+  { Icon: MapPin, label: "Location", val: "Bangalore, Karnataka, India", href: "#" },
 ];
 
 const inputBase: React.CSSProperties = {

@@ -25,9 +25,9 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "DigiTechAvenue — We Make Digital Magic",
   description:
-    "DigiTechAvenue crafts brands, websites, and digital products that feel alive — from Pune to the world. Award-winning digital agency.",
+    "DigiTechAvenue crafts brands, websites, and digital products that feel alive — from Bangalore to the world. Award-winning digital agency.",
   keywords: [
-    "digital agency Pune",
+    "digital agency Bangalore",
     "web design agency",
     "UI UX design",
     "website development",
