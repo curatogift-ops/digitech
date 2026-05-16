@@ -80,7 +80,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} DigiTechAvenue. All rights reserved.
           </span>
           <div style={{ display:"flex", gap:"18px", fontSize:".54rem", letterSpacing:".1em", color:"rgba(255,255,255,.22)", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
-            <Link href="/terms" className="ft-link">Privacy Policy</Link>
+            <Link href="/privacy" className="ft-link">Privacy Policy</Link>
             <Link href="/terms" className="ft-link">Terms of Service</Link>
           </div>
         </div>
