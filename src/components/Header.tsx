@@ -1,213 +1,109 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const navLinks = [
-  { label: "Work",     href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "About",    href: "/about" },
-  { label: "Process",  href: "/#process" },
-  { label: "Contact",  href: "/contact" },
+const groups = [
+  {
+    title: "Build",
+    links: [
+      { name: "Website development", href: "/services/web-development" },
+      { name: "E-commerce development", href: "/contact" },
+      { name: "Mobile app development", href: "/services/app-development" },
+      { name: "Custom web applications", href: "/contact" },
+      { name: "Admin panels and portals", href: "/contact" },
+    ],
+  },
+  {
+    title: "Grow",
+    links: [
+      { name: "Performance marketing", href: "/contact" },
+      { name: "Google Ads", href: "/contact" },
+      { name: "SEO", href: "/services/seo-optimization" },
+      { name: "Social media marketing", href: "/contact" },
+      { name: "Conversion tracking", href: "/contact" },
+    ],
+  },
+  {
+    title: "Automate and create",
+    links: [
+      { name: "AI integration", href: "/#ai" },
+      { name: "UI / UX design", href: "/services/ui-ux-design" },
+      { name: "Graphic design", href: "/contact" },
+      { name: "Content writing", href: "/contact" },
+    ],
+  },
 ];
 
 export function Header() {
-  const [scrolled, setScrolled]     = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+  }, [open]);
 
-  // Custom cursor
-  useEffect(() => {
-    const cur  = document.getElementById("dta-cur");
-    const ring = document.getElementById("dta-cur-ring");
-    if (!cur || !ring) return;
-    if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    const onMove = (e: MouseEvent) => {
-      mx = e.clientX; my = e.clientY;
-      cur.style.left = mx + "px"; cur.style.top = my + "px";
-    };
-    document.addEventListener("mousemove", onMove);
-    let raf: number;
-    const loop = () => {
-      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-      ring.style.left = rx + "px"; ring.style.top = ry + "px";
-      raf = requestAnimationFrame(loop);
-    };
-    loop();
-    return () => { document.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
-  }, []);
-
-  const close = () => setMobileOpen(false);
+  function go(href: string) {
+    setOpen(false);
+    router.push(href);
+  }
 
   return (
-    <>
-      <div id="dta-cur" />
-      <div id="dta-cur-ring" />
-
-      <header style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 500,
-        height: "var(--nav-h)",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 16px",
-        transition: "background .4s, backdrop-filter .4s, border-color .4s",
-        ...(scrolled ? {
-          background: "rgba(13,13,31,.9)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(255,255,255,.07)",
-        } : {}),
-      }} className="header-inner">
-
-        {/* Logo */}
-        <Link href="/" style={{
-          fontFamily: "'Fraunces', serif",
-          fontSize: "clamp(1rem, 4vw, 1.25rem)",
-          fontWeight: 700, fontStyle: "italic",
-          letterSpacing: "-.01em", color: "#fff", zIndex: 10,
-          flexShrink: 0,
-        }}>
-          Digitech<em style={{ fontStyle: "normal", color: "#e879f9" }}>Avenue</em>
-          <em style={{ fontStyle: "normal", color: "#a855f7" }}>.</em>
+    <header className="site-header">
+      <div className="wrap site-header-bar">
+        <Link href="/" className="brand" aria-label="Digitech Avenue" onClick={() => setOpen(false)}>
+          <img src="/brand-logo.png" alt="Digitech Avenue" />
         </Link>
-
-        {/* Desktop nav */}
-        <ul className="nav-desktop" style={{ listStyle: "none", gap: "28px" }}>
-          {navLinks.map(link => (
-            <li key={link.label}>
-              <Link href={link.href} style={{
-                fontSize: ".68rem", letterSpacing: ".12em", textTransform: "uppercase",
-                color: "rgba(255,255,255,.42)", transition: "color .3s",
-                fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500,
-              }} className="nav-link">
-                {link.label}
-              </Link>
-            </li>
-          ))}
+        <ul className="nav-desktop">
+          <li className="has-menu">
+            <Link href="/#services">Services</Link>
+            <div className="mega">
+              {groups.map((group) => (
+                <div key={group.title}>
+                  <h3>{group.title}</h3>
+                  {group.links.map((link) => (
+                    <Link key={link.name} href={link.href}>{link.name}</Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </li>
+          <li><Link href="/#work">Work</Link></li>
+          <li><Link href="/about">About</Link></li>
+          <li><Link href="/blog">Insights</Link></li>
+          <li><Link href="/contact">Contact</Link></li>
         </ul>
-
-        {/* CTA + hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Link href="/contact" className="nav-cta-btn" style={{
-            fontSize: ".62rem", letterSpacing: ".12em", textTransform: "uppercase",
-            padding: "9px 20px",
-            background: "#fff", color: "#0d0d1f",
-            fontWeight: 700, borderRadius: "100px",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            transition: "transform .2s",
-            whiteSpace: "nowrap",
-          }}>
-            Start a Project
-          </Link>
-
-          {/* Hamburger — always visible on small screens */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu"
-            style={{
-              background: "none", border: "none", cursor: "pointer",
-              padding: "6px", zIndex: 10,
-              display: "flex", flexDirection: "column", gap: "5px",
-            }} className="hamburger-btn">
-            <span style={{
-              display: "block", width: "22px", height: "1.5px", background: "#fff",
-              transition: "transform .35s, opacity .35s",
-              transform: mobileOpen ? "translateY(6.5px) rotate(45deg)" : "none",
-            }} />
-            <span style={{
-              display: "block", width: "22px", height: "1.5px", background: "#fff",
-              transition: "opacity .35s",
-              opacity: mobileOpen ? 0 : 1,
-            }} />
-            <span style={{
-              display: "block", width: "22px", height: "1.5px", background: "#fff",
-              transition: "transform .35s",
-              transform: mobileOpen ? "translateY(-6.5px) rotate(-45deg)" : "none",
-            }} />
+        <div className="header-actions">
+          <a className="wa-btn" href="https://wa.me/917996998142" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3A9 9 0 1 1 12 21zm5-6.7c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.2-.3a.5.5 0 0 0 0-.5c0-.1-.6-1.5-.8-2s-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.8 11.8 0 0 0 4.5 4 15 15 0 0 0 1.5.6 3.6 3.6 0 0 0 1.7.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z" />
+            </svg>
+          </a>
+          <Link href="/#contact" className="btn btn-accent header-cta">Start a project</Link>
+          <button className="menu-btn" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+            <span /><span /><span />
           </button>
         </div>
-      </header>
-
-      {/* Mobile fullscreen menu */}
-      <div style={{
-        position: "fixed", inset: 0, zIndex: 400,
-        background: "#13132b",
-        display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "0 24px",
-        clipPath: mobileOpen
-          ? "circle(150% at calc(100% - 40px) 32px)"
-          : "circle(0% at calc(100% - 40px) 32px)",
-        transition: "clip-path .65s cubic-bezier(.77,0,.18,1)",
-        pointerEvents: mobileOpen ? "all" : "none",
-        overflowY: "auto",
-      }}>
-        <nav>
-          {navLinks.map(link => (
-            <Link key={link.label} href={link.href} onClick={close} style={{
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              fontFamily: "'Fraunces', serif",
-              fontSize: "clamp(2.2rem, 10vw, 5rem)",
-              fontWeight: 700, fontStyle: "italic",
-              color: "rgba(255,255,255,.15)",
-              padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.07)",
-              transition: "color .3s, padding-left .3s",
-            }} className="mob-nav-link">
-              {link.label}
-              <span style={{ fontSize: ".4em", fontStyle: "normal", opacity: .35 }}>→</span>
-            </Link>
-          ))}
-        </nav>
-        <Link href="/contact" onClick={close} style={{
-          marginTop: "32px", alignSelf: "flex-start",
-          background: "#fff", color: "#0d0d1f",
-          padding: "12px 28px", borderRadius: "100px",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: ".7rem", letterSpacing: ".1em", textTransform: "uppercase", fontWeight: 700,
-        }}>
-          Start a Project →
-        </Link>
-        <div style={{
-          marginTop: "36px", display: "flex", gap: "20px",
-          fontSize: ".58rem", letterSpacing: ".12em", textTransform: "uppercase",
-          color: "rgba(255,255,255,.28)",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          flexWrap: "wrap",
-        }}>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="mob-social">Instagram</a>
-          <a href="https://linkedin.com"  target="_blank" rel="noopener noreferrer" className="mob-social">LinkedIn</a>
-          <a href="https://dribbble.com"  target="_blank" rel="noopener noreferrer" className="mob-social">Dribbble</a>
-        </div>
       </div>
-
-      <style>{`
-        .header-inner { padding-left: 16px; padding-right: 16px; }
-        @media(min-width:640px)  { .header-inner { padding-left: 24px; padding-right: 24px; } }
-        @media(min-width:1024px) { .header-inner { padding-left: 48px; padding-right: 48px; } }
-
-        /* Desktop: show nav, shrink hamburger */
-        .nav-desktop { display: none; }
-        .nav-cta-btn { display: none; }
-        .hamburger-btn { display: flex; }
-        @media(min-width:768px) {
-          .nav-desktop { display: flex; }
-          .nav-cta-btn { display: inline-block; }
-        }
-        @media(min-width:1024px) {
-          .hamburger-btn { display: none; }
-        }
-
-        .nav-link:hover  { color: #fff !important; }
-        .mob-nav-link:hover { color: #fff !important; padding-left: 12px !important; }
-        .mob-social:hover { color: #fff !important; }
-      `}</style>
-    </>
+      {open && (
+        <nav className="mobile-nav wrap">
+          <Link href="/#work" onClick={(e) => { e.preventDefault(); go("/#work"); }}>Work</Link>
+          <Link href="/about" onClick={(e) => { e.preventDefault(); go("/about"); }}>About</Link>
+          <Link href="/blog" onClick={(e) => { e.preventDefault(); go("/blog"); }}>Insights</Link>
+          <Link href="/contact" onClick={(e) => { e.preventDefault(); go("/contact"); }}>Contact</Link>
+          {groups.map((group) => (
+            <div key={group.title}>
+              <p className="group-label">{group.title}</p>
+              {group.links.map((link) => (
+                <Link key={link.name} href={link.href} onClick={(e) => { e.preventDefault(); go(link.href); }}>{link.name}</Link>
+              ))}
+            </div>
+          ))}
+          <Link href="/#contact" className="btn btn-accent" style={{ marginTop: 16 }} onClick={(e) => { e.preventDefault(); go("/#contact"); }}>Start a project</Link>
+        </nav>
+      )}
+    </header>
   );
 }
