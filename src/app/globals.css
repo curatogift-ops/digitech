@@ -193,16 +193,16 @@
 .wa-btn {
   width: 44px;
   height: 44px;
-  border-radius: 6px;
+  border-radius: 50%;
   background: #25d366;
-  color: #06210f;
+  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .wa-btn:hover { background: #1ebe5d; }
-.wa-btn svg { width: 22px; height: 22px; display: block; }
+.wa-btn svg { width: 24px; height: 24px; display: block; }
 .menu-btn {
   width: 44px;
   height: 44px;
